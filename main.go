@@ -1,9 +1,9 @@
-package spotify_mock_api
+package main
 
 import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
-	"gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 	"os"
 	"spotify-mock-api/internal/handlers"
