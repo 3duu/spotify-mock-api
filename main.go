@@ -7,6 +7,8 @@ import (
 	"github.com/glebarez/sqlite"
 	"github.com/rs/cors"
 	"gorm.io/gorm"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"spotify-mock-api/internal/handlers"
@@ -18,19 +20,28 @@ var db *gorm.DB
 
 func main() {
 	// Initialize SQLite database
-	var err error
-	db, err = gorm.Open(sqlite.Open("songs.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("app.db"), &gorm.Config{})
 	if err != nil {
-		panic("failed to connect database: " + err.Error())
+		log.Fatal("failed to connect database:", err)
 	}
 
-	// Migrate the Song schema
-	if err := db.AutoMigrate(&models.Song{}); err != nil {
-		panic("failed to migrate database: " + err.Error())
+	// 2) Auto‐migrate all your models
+	if err := db.AutoMigrate(
+		&models.Song{},
+		&models.Playlist{},
+		&models.LibraryEntry{},
+		&models.User{},
+	); err != nil {
+		log.Fatal("migration failed:", err)
+	}
+
+	// 3) Seed default data on first run
+	if err := seedDefaults(db); err != nil {
+		log.Fatal("seeding defaults failed:", err)
 	}
 
 	// Load songs from JSON into database
-	loadSongs("data/songs.json")
+	//loadSongs("data/songs.json")
 
 	r := gin.Default()
 
@@ -52,7 +63,8 @@ func main() {
 	r.GET("/tracks/:id/audio", handlers.GetTrackAudio)
 
 	//Playlist
-	r.GET("/library/recent-playlists", handlers.GetRecentPlaylists)
+	r.GET("/library/recent-playlists", handlers.GetRecentPlaylists(db))
+	r.GET("/library", handlers.GetLibraryData(db))
 
 	r.GET("/me", handlers.GetCurrentUser)
 
@@ -81,4 +93,76 @@ func loadSongs(path string) {
 	for _, s := range songs {
 		db.FirstOrCreate(&models.Song{}, s)
 	}
+}
+
+// define a struct matching defaults.json
+type Defaults struct {
+	Songs          []models.Song         `json:"songs"`
+	Playlists      []models.Playlist     `json:"playlists"`
+	LibraryEntries []models.LibraryEntry `json:"libraryEntries"`
+	User           models.User           `json:"user"`
+}
+
+func seedDefaults(db *gorm.DB) error {
+	// read the file once
+	b, err := ioutil.ReadFile("data/defaults.json")
+	if err != nil {
+		return fmt.Errorf("read defaults.json: %w", err)
+	}
+	var defs Defaults
+	if err := json.Unmarshal(b, &defs); err != nil {
+		return fmt.Errorf("unmarshal defaults.json: %w", err)
+	}
+
+	// seed Songs
+	var songCount int64
+	db.Model(&models.Song{}).Count(&songCount)
+	if songCount == 0 {
+		for _, s := range defs.Songs {
+			if err := db.Create(&s).Error; err != nil {
+				return fmt.Errorf("insert song %s: %w", s.ID, err)
+			}
+		}
+		log.Printf("seeded %d songs", len(defs.Songs))
+	}
+
+	// seed Playlists
+	var plCount int64
+	db.Model(&models.Playlist{}).Count(&plCount)
+	if plCount == 0 {
+		for _, p := range defs.Playlists {
+			if err := db.Create(&p).Error; err != nil {
+				return fmt.Errorf("insert playlist %s: %w", p.ID, err)
+			}
+		}
+		log.Printf("seeded %d playlists", len(defs.Playlists))
+	}
+
+	// seed LibraryEntries
+	var libCount int64
+	db.Model(&models.LibraryEntry{}).Count(&libCount)
+	if libCount == 0 {
+		for _, e := range defs.LibraryEntries {
+			if err := db.Create(&e).Error; err != nil {
+				return fmt.Errorf("insert library entry %s: %w", e.ID, err)
+			}
+		}
+		log.Printf("seeded %d library entries", len(defs.LibraryEntries))
+	}
+
+	// seed User
+	var userCount int64
+	db.Model(&models.User{}).Count(&userCount)
+	if userCount == 0 {
+		// ensure avatar file exists
+		if _, err := os.Stat("media/avatar.jpg"); err != nil {
+			log.Println("warning: avatar.jpg not found; using placeholder")
+		}
+		if err := db.Create(&defs.User).Error; err != nil {
+			return fmt.Errorf("insert default user: %w", err)
+		}
+		log.Println("seeded default user profile")
+	}
+
+	return nil
 }

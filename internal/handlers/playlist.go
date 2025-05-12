@@ -1,26 +1,48 @@
 package handlers
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 	"log"
 	"net/http"
+	"spotify-mock-api/internal/models"
 )
 
-type Playlist struct {
+type PlaylistResponse struct {
 	ID       string `json:"id"`
 	Title    string `json:"title"`
 	Subtitle string `json:"subtitle"`
 	IconURL  string `json:"icon"`
 }
 
-// Handler for recent playlists
-func GetRecentPlaylists(c *gin.Context) {
-	log.Print("GetRecentPlaylists")
-	// TODO: replace with real data from DB or cache
-	playlists := []Playlist{
-		{ID: "1", Title: "Liked songs", Subtitle: "Playlist • 27 músicas", IconURL: "/media/like.png"},
-		{ID: "2", Title: "Novos episódios", Subtitle: "Atualizado em 23 de abr. de 2025", IconURL: "/media/podcast.png"},
-		// … more entries …
+// GetRecentPlaylists queries the playlists table and returns them
+func GetRecentPlaylists(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		log.Print("GetRecentPlaylists")
+
+		// 1) Fetch all playlists from the DB
+		var pls []models.Playlist
+		if err := db.Find(&pls).Error; err != nil {
+			log.Printf("DB error fetching playlists: %v", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "could not load playlists"})
+			return
+		}
+
+		// 2) Map to the API response type
+		res := make([]PlaylistResponse, len(pls))
+		for i, p := range pls {
+			// You can customize Subtitle as you like (e.g. count of songs)
+			subtitle := fmt.Sprintf("Playlist • %d tracks", 0)
+			res[i] = PlaylistResponse{
+				ID:       p.ID,
+				Title:    p.Title,
+				Subtitle: subtitle,
+				IconURL:  p.Cover,
+			}
+		}
+
+		// 3) Return JSON
+		c.JSON(http.StatusOK, res)
 	}
-	c.JSON(http.StatusOK, playlists)
 }
