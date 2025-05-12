@@ -2,19 +2,31 @@
   "playlists": [
     {
       "id": "liked-songs",
-      "name": "Liked Songs",
+      "title": "Liked Songs",
       "cover": "/media/playlist-art.jpg",
-      "user_id": "1",
+      "user_id": 1,
       "updated_at": "2025-05-12T00:00:00Z",
       "songs": []
     },
     {
       "id": "new-releases",
-      "name": "New Releases",
+      "title": "New Releases",
       "cover": "/media/playlist-art.jpg",
-      "user_id": "1",
+      "user_id": 1,
       "updated_at": "2025-05-12T00:00:00Z",
       "songs": []
+    }
+  ],
+  "podcasts": [
+    {
+      "id": 1,
+      "name": "Podcast for Women",
+      "cover": "/media/playlist-art.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Podcast for Men",
+      "cover": "/media/playlist-art.jpg"
     }
   ],
   "libraryEntries": [
@@ -36,7 +48,7 @@
     }
   ],
   "user": {
-    "id": "1",
+    "id": 1,
     "name": "Eduardo Porto",
     "image": "/media/user-image.jpg"
   },
@@ -1560,6 +1572,14 @@
       "genre": "Metalcore",
       "artist_id": 63,
       "album_id": 88
+    },
+    {
+      "id": "104",
+      "title": "Faint",
+      "duration": 269,
+      "genre": "Nu Metal",
+      "artist_id": 61,
+      "album_id": 86
     }
   ]
 }

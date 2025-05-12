@@ -6,13 +6,11 @@ import (
 )
 
 type Playlist struct {
-	ID          string `json:"id"`
-	Title       string `json:"title"`
-	Cover       string
-	Subtitle    string    `json:"subtitle"`
-	IconURL     string    `json:"icon"`
+	ID          string    `json:"id"`
+	Title       string    `json:"title"`
+	Cover       string    `json:"cover"`
 	LastUpdated time.Time `gorm:"autoUpdateTime" json:"last_updated"`
-	UserID      string    `json:"user_id"`
+	UserID      int       `json:"user_id"`
 	Songs       []Song    `gorm:"many2many:playlist_songs;" json:"songs"`
 }
 type Artist struct {
@@ -38,7 +36,7 @@ type Song struct {
 	Artist   string `json:"artist"`
 	Album    string `json:"album"`
 	Genre    string `json:"genre"`
-	Duration int    `json:"duration"` // duration in seconds
+	Duration int    `json:"duration"`
 }
 
 type PlaylistSong struct {

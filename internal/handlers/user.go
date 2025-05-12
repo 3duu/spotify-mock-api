@@ -19,7 +19,7 @@ func GetCurrentUser(c *gin.Context) {
 	avatarURL := fmt.Sprintf("%s://%s/media/user_image.jpg", scheme, c.Request.Host)
 
 	user := models.User{
-		ID:    "1",
+		ID:    1,
 		Name:  "Eduardo Porto de Araujo",
 		Image: avatarURL,
 	}

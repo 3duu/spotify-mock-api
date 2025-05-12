@@ -81,24 +81,6 @@ func main() {
 	http.ListenAndServe("0.0.0.0"+port, handler)
 }
 
-// loadSongs reads a JSON array of songs and inserts them into the DB
-func loadSongs(path string) {
-	file, err := os.Open(path)
-	if err != nil {
-		panic("unable to open songs.json: " + err.Error())
-	}
-	defer file.Close()
-
-	var songs []models.Song
-	if err := json.NewDecoder(file).Decode(&songs); err != nil {
-		panic("failed to decode JSON: " + err.Error())
-	}
-
-	for _, s := range songs {
-		db.FirstOrCreate(&models.Song{}, s)
-	}
-}
-
 // define a struct matching defaults.json
 type Defaults struct {
 	Songs          []models.Song         `json:"songs"`
