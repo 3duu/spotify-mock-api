@@ -7,6 +7,7 @@ import (
 	"github.com/glebarez/sqlite"
 	"github.com/rs/cors"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -14,19 +15,22 @@ import (
 	"spotify-mock-api/internal/handlers"
 	"spotify-mock-api/internal/models"
 	"spotify-mock-api/internal/utils"
+	"time"
 )
 
 var db *gorm.DB
 
 func main() {
 	// Initialize SQLite database
-	db, err := gorm.Open(sqlite.Open("app.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("app.db"), &gorm.Config{Logger: logger.Default.LogMode(logger.Info)})
 	if err != nil {
 		log.Fatal("failed to connect database:", err)
 	}
 
 	// 2) Auto‐migrate all your models
 	if err := db.AutoMigrate(
+		&models.Artist{},
+		&models.Album{},
 		&models.Song{},
 		&models.Playlist{},
 		&models.LibraryEntry{},
@@ -63,7 +67,7 @@ func main() {
 	r.GET("/tracks/:id/audio", handlers.GetTrackAudio)
 
 	//Playlist
-	r.GET("/library/recent-playlists", handlers.GetRecentPlaylists(db))
+	r.GET("/users/:userId/recent-playlists", handlers.GetRecentPlaylistsByUser(db))
 	r.GET("/library", handlers.GetLibraryData(db))
 
 	r.GET("/me", handlers.GetCurrentUser)
@@ -98,68 +102,88 @@ func loadSongs(path string) {
 // define a struct matching defaults.json
 type Defaults struct {
 	Songs          []models.Song         `json:"songs"`
+	Albums         []models.Album        `json:"albums"`
+	Artists        []models.Artist       `json:"artists"`
 	Playlists      []models.Playlist     `json:"playlists"`
 	LibraryEntries []models.LibraryEntry `json:"libraryEntries"`
 	User           models.User           `json:"user"`
 }
 
 func seedDefaults(db *gorm.DB) error {
-	// read the file once
 	b, err := ioutil.ReadFile("data/defaults.json")
 	if err != nil {
 		return fmt.Errorf("read defaults.json: %w", err)
 	}
+
 	var defs Defaults
 	if err := json.Unmarshal(b, &defs); err != nil {
 		return fmt.Errorf("unmarshal defaults.json: %w", err)
 	}
 
-	// seed Songs
+	// Seed Artists
+	var artistCount int64
+	db.Model(&models.Artist{}).Count(&artistCount)
+	if artistCount == 0 {
+		if err := db.Create(&defs.Artists).Error; err != nil {
+			return fmt.Errorf("insert artists: %w", err)
+		}
+		log.Printf("seeded %d artists", len(defs.Artists))
+	}
+
+	// Seed Albums
+	var albumCount int64
+	db.Model(&models.Album{}).Count(&albumCount)
+	if albumCount == 0 {
+		if err := db.Create(&defs.Albums).Error; err != nil {
+			return fmt.Errorf("insert albums: %w", err)
+		}
+		log.Printf("seeded %d albums", len(defs.Albums))
+	}
+
+	// Seed Songs
 	var songCount int64
 	db.Model(&models.Song{}).Count(&songCount)
 	if songCount == 0 {
-		for _, s := range defs.Songs {
-			if err := db.Create(&s).Error; err != nil {
-				return fmt.Errorf("insert song %s: %w", s.ID, err)
-			}
+		if err := db.Create(&defs.Songs).Error; err != nil {
+			return fmt.Errorf("insert songs: %w", err)
 		}
 		log.Printf("seeded %d songs", len(defs.Songs))
 	}
 
-	// seed Playlists
+	// Seed Playlists
 	var plCount int64
 	db.Model(&models.Playlist{}).Count(&plCount)
 	if plCount == 0 {
-		for _, p := range defs.Playlists {
-			if err := db.Create(&p).Error; err != nil {
-				return fmt.Errorf("insert playlist %s: %w", p.ID, err)
+		for i := range defs.Playlists {
+			if defs.Playlists[i].LastUpdated.IsZero() {
+				defs.Playlists[i].LastUpdated = time.Now()
 			}
+		}
+		if err := db.Create(&defs.Playlists).Error; err != nil {
+			return fmt.Errorf("insert playlists: %w", err)
 		}
 		log.Printf("seeded %d playlists", len(defs.Playlists))
 	}
 
-	// seed LibraryEntries
+	// Seed LibraryEntries
 	var libCount int64
 	db.Model(&models.LibraryEntry{}).Count(&libCount)
 	if libCount == 0 {
-		for _, e := range defs.LibraryEntries {
-			if err := db.Create(&e).Error; err != nil {
-				return fmt.Errorf("insert library entry %s: %w", e.ID, err)
-			}
+		if err := db.Create(&defs.LibraryEntries).Error; err != nil {
+			return fmt.Errorf("insert library entries: %w", err)
 		}
 		log.Printf("seeded %d library entries", len(defs.LibraryEntries))
 	}
 
-	// seed User
+	// Seed User
 	var userCount int64
 	db.Model(&models.User{}).Count(&userCount)
 	if userCount == 0 {
-		// ensure avatar file exists
 		if _, err := os.Stat("media/avatar.jpg"); err != nil {
 			log.Println("warning: avatar.jpg not found; using placeholder")
 		}
 		if err := db.Create(&defs.User).Error; err != nil {
-			return fmt.Errorf("insert default user: %w", err)
+			return fmt.Errorf("insert user: %w", err)
 		}
 		log.Println("seeded default user profile")
 	}

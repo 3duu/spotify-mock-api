@@ -3,12 +3,18 @@
     {
       "id": "liked-songs",
       "name": "Liked Songs",
-      "cover": "/media/playlist-art.jpg"
+      "cover": "/media/playlist-art.jpg",
+      "user_id": "1",
+      "updated_at": "2025-05-12T00:00:00Z",
+      "songs": []
     },
     {
       "id": "new-releases",
       "name": "New Releases",
-      "cover": "/media/playlist-art.jpg"
+      "cover": "/media/playlist-art.jpg",
+      "user_id": "1",
+      "updated_at": "2025-05-12T00:00:00Z",
+      "songs": []
     }
   ],
   "libraryEntries": [
@@ -34,830 +40,1526 @@
     "name": "Eduardo Porto",
     "image": "/media/user-image.jpg"
   },
+  "artists": [
+    {
+      "name": "The Weeknd",
+      "artist_id": 1
+    },
+    {
+      "name": "Ed Sheeran",
+      "artist_id": 2
+    },
+    {
+      "name": "Tones and I",
+      "artist_id": 3
+    },
+    {
+      "name": "Lewis Capaldi",
+      "artist_id": 4
+    },
+    {
+      "name": "Dua Lipa",
+      "artist_id": 5
+    },
+    {
+      "name": "Billie Eilish",
+      "artist_id": 6
+    },
+    {
+      "name": "Shawn Mendes & Camila Cabello",
+      "artist_id": 7
+    },
+    {
+      "name": "Post Malone feat. 21 Savage",
+      "artist_id": 8
+    },
+    {
+      "name": "Lil Nas X",
+      "artist_id": 9
+    },
+    {
+      "name": "Post Malone & Swae Lee",
+      "artist_id": 10
+    },
+    {
+      "name": "Post Malone",
+      "artist_id": 11
+    },
+    {
+      "name": "Lady Gaga & Bradley Cooper",
+      "artist_id": 12
+    },
+    {
+      "name": "Camila Cabello feat. Young Thug",
+      "artist_id": 13
+    },
+    {
+      "name": "Imagine Dragons",
+      "artist_id": 14
+    },
+    {
+      "name": "Maroon 5",
+      "artist_id": 15
+    },
+    {
+      "name": "Mark Ronson feat. Bruno Mars",
+      "artist_id": 16
+    },
+    {
+      "name": "Pharrell Williams",
+      "artist_id": 17
+    },
+    {
+      "name": "Taylor Swift",
+      "artist_id": 18
+    },
+    {
+      "name": "Luis Fonsi & Daddy Yankee",
+      "artist_id": 19
+    },
+    {
+      "name": "Justin Bieber",
+      "artist_id": 20
+    },
+    {
+      "name": "The Chainsmokers feat. Halsey",
+      "artist_id": 21
+    },
+    {
+      "name": "Drake",
+      "artist_id": 22
+    },
+    {
+      "name": "Drake feat. Wizkid & Kyla",
+      "artist_id": 23
+    },
+    {
+      "name": "Travis Scott",
+      "artist_id": 24
+    },
+    {
+      "name": "Maroon 5 feat. Cardi B",
+      "artist_id": 25
+    },
+    {
+      "name": "Charlie Puth feat. Selena Gomez",
+      "artist_id": 26
+    },
+    {
+      "name": "Shakira feat. Wyclef Jean",
+      "artist_id": 27
+    },
+    {
+      "name": "Wiz Khalifa feat. Charlie Puth",
+      "artist_id": 28
+    },
+    {
+      "name": "OneRepublic",
+      "artist_id": 29
+    },
+    {
+      "name": "Adele",
+      "artist_id": 30
+    },
+    {
+      "name": "Lady Gaga",
+      "artist_id": 31
+    },
+    {
+      "name": "Katy Perry",
+      "artist_id": 32
+    },
+    {
+      "name": "Billy Joel",
+      "artist_id": 33
+    },
+    {
+      "name": "Michael Jackson",
+      "artist_id": 34
+    },
+    {
+      "name": "The Beatles",
+      "artist_id": 35
+    },
+    {
+      "name": "Eagles",
+      "artist_id": 36
+    },
+    {
+      "name": "Led Zeppelin",
+      "artist_id": 37
+    },
+    {
+      "name": "Queen",
+      "artist_id": 38
+    },
+    {
+      "name": "Guns N' Roses",
+      "artist_id": 39
+    },
+    {
+      "name": "AC/DC",
+      "artist_id": 40
+    },
+    {
+      "name": "Bon Jovi",
+      "artist_id": 41
+    },
+    {
+      "name": "Survivor",
+      "artist_id": 42
+    },
+    {
+      "name": "Nirvana",
+      "artist_id": 43
+    },
+    {
+      "name": "Pink Floyd",
+      "artist_id": 44
+    },
+    {
+      "name": "Oasis",
+      "artist_id": 45
+    },
+    {
+      "name": "Coldplay",
+      "artist_id": 46
+    },
+    {
+      "name": "Bastille",
+      "artist_id": 47
+    },
+    {
+      "name": "Leonard Cohen",
+      "artist_id": 48
+    },
+    {
+      "name": "Frank Ocean",
+      "artist_id": 49
+    },
+    {
+      "name": "Lana Del Rey",
+      "artist_id": 50
+    },
+    {
+      "name": "The Weeknd feat. Daft Punk",
+      "artist_id": 51
+    },
+    {
+      "name": "Rihanna feat. Mikky Ekko",
+      "artist_id": 52
+    },
+    {
+      "name": "Rihanna",
+      "artist_id": 53
+    },
+    {
+      "name": "Rihanna feat. Calvin Harris",
+      "artist_id": 54
+    },
+    {
+      "name": "The Rolling Stones",
+      "artist_id": 55
+    },
+    {
+      "name": "Carly Simon",
+      "artist_id": 56
+    },
+    {
+      "name": "Santana feat. Rob Thomas",
+      "artist_id": 57
+    },
+    {
+      "name": "Train",
+      "artist_id": 58
+    },
+    {
+      "name": "Green Day",
+      "artist_id": 59
+    },
+    {
+      "name": "R.E.M.",
+      "artist_id": 60
+    },
+    {
+      "name": "Linkin Park",
+      "artist_id": 61
+    },
+    {
+      "name": "Metallica",
+      "artist_id": 62
+    },
+    {
+      "name": "Bullet Foy My Valentine",
+      "artist_id": 63
+    }
+  ],
+  "albums": [
+    {
+      "album_id": 1,
+      "album": "After Hours",
+      "artist_id": 1
+    },
+    {
+      "album_id": 69,
+      "album": "Beauty Behind the Madness",
+      "artist_id": 1
+    },
+    {
+      "album_id": 2,
+      "album": "\u00f7",
+      "artist_id": 2
+    },
+    {
+      "album_id": 21,
+      "album": "x",
+      "artist_id": 2
+    },
+    {
+      "album_id": 3,
+      "album": "The Kids Are Coming",
+      "artist_id": 3
+    },
+    {
+      "album_id": 4,
+      "album": "Divinely Uninspired to a Hellish Extent",
+      "artist_id": 4
+    },
+    {
+      "album_id": 5,
+      "album": "Future Nostalgia",
+      "artist_id": 5
+    },
+    {
+      "album_id": 6,
+      "album": "When We All Fall Asleep, Where Do We Go?",
+      "artist_id": 6
+    },
+    {
+      "album_id": 7,
+      "album": "Se\u00f1orita (Single)",
+      "artist_id": 7
+    },
+    {
+      "album_id": 8,
+      "album": "Beerbongs & Bentleys",
+      "artist_id": 8
+    },
+    {
+      "album_id": 9,
+      "album": "7 EP",
+      "artist_id": 9
+    },
+    {
+      "album_id": 10,
+      "album": "Spider-Man: Into the Spider-Verse",
+      "artist_id": 10
+    },
+    {
+      "album_id": 11,
+      "album": "Hollywood's Bleeding",
+      "artist_id": 11
+    },
+    {
+      "album_id": 12,
+      "album": "A Star Is Born Soundtrack",
+      "artist_id": 12
+    },
+    {
+      "album_id": 13,
+      "album": "Camila",
+      "artist_id": 13
+    },
+    {
+      "album_id": 14,
+      "album": "Evolve",
+      "artist_id": 14
+    },
+    {
+      "album_id": 63,
+      "album": "Night Visions",
+      "artist_id": 14
+    },
+    {
+      "album_id": 15,
+      "album": "Single",
+      "artist_id": 15
+    },
+    {
+      "album_id": 16,
+      "album": "Uptown Special",
+      "artist_id": 16
+    },
+    {
+      "album_id": 17,
+      "album": "G I R L",
+      "artist_id": 17
+    },
+    {
+      "album_id": 18,
+      "album": "1989",
+      "artist_id": 18
+    },
+    {
+      "album_id": 19,
+      "album": "Vida",
+      "artist_id": 19
+    },
+    {
+      "album_id": 20,
+      "album": "Purpose",
+      "artist_id": 20
+    },
+    {
+      "album_id": 22,
+      "album": "Collage",
+      "artist_id": 21
+    },
+    {
+      "album_id": 23,
+      "album": "Scorpion",
+      "artist_id": 22
+    },
+    {
+      "album_id": 24,
+      "album": "Views",
+      "artist_id": 23
+    },
+    {
+      "album_id": 25,
+      "album": "ASTROWORLD",
+      "artist_id": 24
+    },
+    {
+      "album_id": 26,
+      "album": "Red Pill Blues",
+      "artist_id": 25
+    },
+    {
+      "album_id": 27,
+      "album": "Voicenotes",
+      "artist_id": 26
+    },
+    {
+      "album_id": 28,
+      "album": "Oral Fixation, Vol. 2",
+      "artist_id": 27
+    },
+    {
+      "album_id": 29,
+      "album": "Furious 7 Soundtrack",
+      "artist_id": 28
+    },
+    {
+      "album_id": 30,
+      "album": "Native",
+      "artist_id": 29
+    },
+    {
+      "album_id": 31,
+      "album": "21",
+      "artist_id": 30
+    },
+    {
+      "album_id": 32,
+      "album": "25",
+      "artist_id": 30
+    },
+    {
+      "album_id": 33,
+      "album": "The Fame Monster",
+      "artist_id": 31
+    },
+    {
+      "album_id": 34,
+      "album": "The Fame",
+      "artist_id": 31
+    },
+    {
+      "album_id": 35,
+      "album": "Teenage Dream",
+      "artist_id": 32
+    },
+    {
+      "album_id": 36,
+      "album": "Prism",
+      "artist_id": 32
+    },
+    {
+      "album_id": 37,
+      "album": "An Innocent Man",
+      "artist_id": 33
+    },
+    {
+      "album_id": 38,
+      "album": "Thriller",
+      "artist_id": 34
+    },
+    {
+      "album_id": 39,
+      "album": "Bad",
+      "artist_id": 34
+    },
+    {
+      "album_id": 40,
+      "album": "Hey Jude",
+      "artist_id": 35
+    },
+    {
+      "album_id": 41,
+      "album": "Let It Be",
+      "artist_id": 35
+    },
+    {
+      "album_id": 42,
+      "album": "Help!",
+      "artist_id": 35
+    },
+    {
+      "album_id": 43,
+      "album": "Hotel California",
+      "artist_id": 36
+    },
+    {
+      "album_id": 44,
+      "album": "Led Zeppelin IV",
+      "artist_id": 37
+    },
+    {
+      "album_id": 55,
+      "album": "Physical Graffiti",
+      "artist_id": 37
+    },
+    {
+      "album_id": 45,
+      "album": "A Night at the Opera",
+      "artist_id": 38
+    },
+    {
+      "album_id": 46,
+      "album": "Jazz",
+      "artist_id": 38
+    },
+    {
+      "album_id": 47,
+      "album": "The Game",
+      "artist_id": 38
+    },
+    {
+      "album_id": 48,
+      "album": "Appetite for Destruction",
+      "artist_id": 39
+    },
+    {
+      "album_id": 49,
+      "album": "Use Your Illusion I",
+      "artist_id": 39
+    },
+    {
+      "album_id": 50,
+      "album": "Back In Black",
+      "artist_id": 40
+    },
+    {
+      "album_id": 51,
+      "album": "The Razors Edge",
+      "artist_id": 40
+    },
+    {
+      "album_id": 52,
+      "album": "Slippery When Wet",
+      "artist_id": 41
+    },
+    {
+      "album_id": 53,
+      "album": "Eye of the Tiger",
+      "artist_id": 42
+    },
+    {
+      "album_id": 54,
+      "album": "Nevermind",
+      "artist_id": 43
+    },
+    {
+      "album_id": 56,
+      "album": "Wish You Were Here",
+      "artist_id": 44
+    },
+    {
+      "album_id": 57,
+      "album": "The Wall",
+      "artist_id": 44
+    },
+    {
+      "album_id": 83,
+      "album": "The Dark Side of the Moon",
+      "artist_id": 44
+    },
+    {
+      "album_id": 58,
+      "album": "(What's the Story) Morning Glory?",
+      "artist_id": 45
+    },
+    {
+      "album_id": 59,
+      "album": "Parachutes",
+      "artist_id": 46
+    },
+    {
+      "album_id": 60,
+      "album": "Viva la Vida or Death and All His Friends",
+      "artist_id": 46
+    },
+    {
+      "album_id": 61,
+      "album": "Mylo Xyloto",
+      "artist_id": 46
+    },
+    {
+      "album_id": 62,
+      "album": "X&Y",
+      "artist_id": 46
+    },
+    {
+      "album_id": 64,
+      "album": "Bad Blood",
+      "artist_id": 47
+    },
+    {
+      "album_id": 65,
+      "album": "Various Positions",
+      "artist_id": 48
+    },
+    {
+      "album_id": 66,
+      "album": "Channel Orange",
+      "artist_id": 49
+    },
+    {
+      "album_id": 67,
+      "album": "Born to Die",
+      "artist_id": 50
+    },
+    {
+      "album_id": 68,
+      "album": "The Great Gatsby: Music from Baz Luhrmann's Film",
+      "artist_id": 50
+    },
+    {
+      "album_id": 70,
+      "album": "Starboy",
+      "artist_id": 51
+    },
+    {
+      "album_id": 71,
+      "album": "Unapologetic",
+      "artist_id": 52
+    },
+    {
+      "album_id": 72,
+      "album": "Unapologetic",
+      "artist_id": 53
+    },
+    {
+      "album_id": 74,
+      "album": "Loud",
+      "artist_id": 53
+    },
+    {
+      "album_id": 73,
+      "album": "Talk That Talk",
+      "artist_id": 54
+    },
+    {
+      "album_id": 75,
+      "album": "Aftermath",
+      "artist_id": 55
+    },
+    {
+      "album_id": 76,
+      "album": "Out of Our Heads",
+      "artist_id": 55
+    },
+    {
+      "album_id": 77,
+      "album": "Beggars Banquet",
+      "artist_id": 55
+    },
+    {
+      "album_id": 78,
+      "album": "Let It Bleed",
+      "artist_id": 55
+    },
+    {
+      "album_id": 79,
+      "album": "No Secrets",
+      "artist_id": 56
+    },
+    {
+      "album_id": 80,
+      "album": "Supernatural",
+      "artist_id": 57
+    },
+    {
+      "album_id": 81,
+      "album": "Drops of Jupiter",
+      "artist_id": 58
+    },
+    {
+      "album_id": 82,
+      "album": "American Idiot",
+      "artist_id": 59
+    },
+    {
+      "album_id": 84,
+      "album": "Out of Time",
+      "artist_id": 60
+    },
+    {
+      "album_id": 85,
+      "album": "Automatic for the People",
+      "artist_id": 60
+    },
+    {
+      "album_id": 86,
+      "album": "Meteora",
+      "artist_id": 61
+    },
+    {
+      "album_id": 87,
+      "album": "Ride the Lightning",
+      "artist_id": 62
+    },
+    {
+      "album_id": 88,
+      "album": "The Poison",
+      "artist_id": 63
+    }
+  ],
   "songs": [
     {
       "id": "1",
       "title": "Blinding Lights",
-      "artist": "The Weeknd",
-      "album": "After Hours",
       "duration": 200,
-      "genre": "Pop"
-    },
-    {
-      "id": "2",
-      "title": "Shape of You",
-      "artist": "Ed Sheeran",
-      "album": "\u00f7",
-      "duration": 233,
-      "genre": "Pop"
-    },
-    {
-      "id": "3",
-      "title": "Dance Monkey",
-      "artist": "Tones and I",
-      "album": "The Kids Are Coming",
-      "duration": 209,
-      "genre": "Alternative"
-    },
-    {
-      "id": "4",
-      "title": "Someone You Loved",
-      "artist": "Lewis Capaldi",
-      "album": "Divinely Uninspired to a Hellish Extent",
-      "duration": 182,
-      "genre": "Pop"
-    },
-    {
-      "id": "5",
-      "title": "Levitating",
-      "artist": "Dua Lipa",
-      "album": "Future Nostalgia",
-      "duration": 203,
-      "genre": "Pop"
-    },
-    {
-      "id": "6",
-      "title": "bad guy",
-      "artist": "Billie Eilish",
-      "album": "When We All Fall Asleep, Where Do We Go?",
-      "duration": 194,
-      "genre": "Alternative"
-    },
-    {
-      "id": "7",
-      "title": "Se\u00f1orita",
-      "artist": "Shawn Mendes & Camila Cabello",
-      "album": "Se\u00f1orita (Single)",
-      "duration": 191,
-      "genre": "Pop"
-    },
-    {
-      "id": "8",
-      "title": "Rockstar",
-      "artist": "Post Malone feat. 21 Savage",
-      "album": "Beerbongs & Bentleys",
-      "duration": 218,
-      "genre": "Hip Hop"
-    },
-    {
-      "id": "9",
-      "title": "Old Town Road",
-      "artist": "Lil Nas X",
-      "album": "7 EP",
-      "duration": 157,
-      "genre": "Country Rap"
-    },
-    {
-      "id": "10",
-      "title": "Sunflower",
-      "artist": "Post Malone & Swae Lee",
-      "album": "Spider-Man: Into the Spider-Verse",
-      "duration": 158,
-      "genre": "Hip Hop"
-    },
-    {
-      "id": "11",
-      "title": "Circles",
-      "artist": "Post Malone",
-      "album": "Hollywood's Bleeding",
-      "duration": 215,
-      "genre": "Hip Hop"
-    },
-    {
-      "id": "12",
-      "title": "Shallow",
-      "artist": "Lady Gaga & Bradley Cooper",
-      "album": "A Star Is Born Soundtrack",
-      "duration": 215,
-      "genre": "Pop"
-    },
-    {
-      "id": "13",
-      "title": "Havana",
-      "artist": "Camila Cabello feat. Young Thug",
-      "album": "Camila",
-      "duration": 217,
-      "genre": "Pop"
-    },
-    {
-      "id": "14",
-      "title": "Believer",
-      "artist": "Imagine Dragons",
-      "album": "Evolve",
-      "duration": 204,
-      "genre": "Alternative Rock"
-    },
-    {
-      "id": "15",
-      "title": "Memories",
-      "artist": "Maroon 5",
-      "album": "Single",
-      "duration": 189,
-      "genre": "Pop Rock"
-    },
-    {
-      "id": "16",
-      "title": "Uptown Funk",
-      "artist": "Mark Ronson feat. Bruno Mars",
-      "album": "Uptown Special",
-      "duration": 269,
-      "genre": "Funk"
-    },
-    {
-      "id": "17",
-      "title": "Happy",
-      "artist": "Pharrell Williams",
-      "album": "G I R L",
-      "duration": 233,
-      "genre": "Funk Pop"
-    },
-    {
-      "id": "18",
-      "title": "Shake It Off",
-      "artist": "Taylor Swift",
-      "album": "1989",
-      "duration": 242,
-      "genre": "Pop"
-    },
-    {
-      "id": "19",
-      "title": "Despacito",
-      "artist": "Luis Fonsi & Daddy Yankee",
-      "album": "Vida",
-      "duration": 229,
-      "genre": "Reggaeton"
-    },
-    {
-      "id": "20",
-      "title": "Sorry",
-      "artist": "Justin Bieber",
-      "album": "Purpose",
-      "duration": 200,
-      "genre": "Pop"
-    },
-    {
-      "id": "21",
-      "title": "Thinking Out Loud",
-      "artist": "Ed Sheeran",
-      "album": "x",
-      "duration": 281,
-      "genre": "Pop"
-    },
-    {
-      "id": "22",
-      "title": "Closer",
-      "artist": "The Chainsmokers feat. Halsey",
-      "album": "Collage",
-      "duration": 244,
-      "genre": "EDM"
-    },
-    {
-      "id": "23",
-      "title": "God's Plan",
-      "artist": "Drake",
-      "album": "Scorpion",
-      "duration": 198,
-      "genre": "Hip Hop"
-    },
-    {
-      "id": "24",
-      "title": "One Dance",
-      "artist": "Drake feat. Wizkid & Kyla",
-      "album": "Views",
-      "duration": 173,
-      "genre": "Hip Hop"
-    },
-    {
-      "id": "25",
-      "title": "Sicko Mode",
-      "artist": "Travis Scott",
-      "album": "ASTROWORLD",
-      "duration": 312,
-      "genre": "Hip Hop"
-    },
-    {
-      "id": "26",
-      "title": "Perfect",
-      "artist": "Ed Sheeran",
-      "album": "\u00f7",
-      "duration": 263,
-      "genre": "Pop"
-    },
-    {
-      "id": "27",
-      "title": "Girls Like You",
-      "artist": "Maroon 5 feat. Cardi B",
-      "album": "Red Pill Blues",
-      "duration": 235,
-      "genre": "Pop Rock"
-    },
-    {
-      "id": "28",
-      "title": "We Don't Talk Anymore",
-      "artist": "Charlie Puth feat. Selena Gomez",
-      "album": "Voicenotes",
-      "duration": 217,
-      "genre": "Pop"
-    },
-    {
-      "id": "29",
-      "title": "Hips Don't Lie",
-      "artist": "Shakira feat. Wyclef Jean",
-      "album": "Oral Fixation, Vol. 2",
-      "duration": 218,
-      "genre": "Latin Pop"
-    },
-    {
-      "id": "30",
-      "title": "See You Again",
-      "artist": "Wiz Khalifa feat. Charlie Puth",
-      "album": "Furious 7 Soundtrack",
-      "duration": 229,
-      "genre": "Hip Hop"
-    },
-    {
-      "id": "31",
-      "title": "Counting Stars",
-      "artist": "OneRepublic",
-      "album": "Native",
-      "duration": 257,
-      "genre": "Pop Rock"
-    },
-    {
-      "id": "32",
-      "title": "Thunder",
-      "artist": "Imagine Dragons",
-      "album": "Evolve",
-      "duration": 187,
-      "genre": "Alternative Rock"
-    },
-    {
-      "id": "33",
-      "title": "Rolling in the Deep",
-      "artist": "Adele",
-      "album": "21",
-      "duration": 228,
-      "genre": "Soul"
-    },
-    {
-      "id": "34",
-      "title": "Someone Like You",
-      "artist": "Adele",
-      "album": "21",
-      "duration": 285,
-      "genre": "Soul"
-    },
-    {
-      "id": "35",
-      "title": "Hello",
-      "artist": "Adele",
-      "album": "25",
-      "duration": 295,
-      "genre": "Soul"
-    },
-    {
-      "id": "36",
-      "title": "Bad Romance",
-      "artist": "Lady Gaga",
-      "album": "The Fame Monster",
-      "duration": 295,
-      "genre": "Pop"
-    },
-    {
-      "id": "37",
-      "title": "Poker Face",
-      "artist": "Lady Gaga",
-      "album": "The Fame",
-      "duration": 235,
-      "genre": "Pop"
-    },
-    {
-      "id": "38",
-      "title": "Firework",
-      "artist": "Katy Perry",
-      "album": "Teenage Dream",
-      "duration": 228,
-      "genre": "Pop"
-    },
-    {
-      "id": "39",
-      "title": "Teenage Dream",
-      "artist": "Katy Perry",
-      "album": "Teenage Dream",
-      "duration": 207,
-      "genre": "Pop"
-    },
-    {
-      "id": "40",
-      "title": "Roar",
-      "artist": "Katy Perry",
-      "album": "Prism",
-      "duration": 223,
-      "genre": "Pop"
-    },
-    {
-      "id": "41",
-      "title": "Uptown Girl",
-      "artist": "Billy Joel",
-      "album": "An Innocent Man",
-      "duration": 153,
-      "genre": "Soft Rock"
-    },
-    {
-      "id": "42",
-      "title": "Billie Jean",
-      "artist": "Michael Jackson",
-      "album": "Thriller",
-      "duration": 293,
-      "genre": "Pop"
-    },
-    {
-      "id": "43",
-      "title": "Thriller",
-      "artist": "Michael Jackson",
-      "album": "Thriller",
-      "duration": 357,
-      "genre": "Pop"
-    },
-    {
-      "id": "44",
-      "title": "Smooth Criminal",
-      "artist": "Michael Jackson",
-      "album": "Bad",
-      "duration": 257,
-      "genre": "Pop"
-    },
-    {
-      "id": "45",
-      "title": "Beat It",
-      "artist": "Michael Jackson",
-      "album": "Thriller",
-      "duration": 258,
-      "genre": "Pop"
-    },
-    {
-      "id": "46",
-      "title": "Hey Jude",
-      "artist": "The Beatles",
-      "album": "Hey Jude",
-      "duration": 431,
-      "genre": "Rock"
-    },
-    {
-      "id": "47",
-      "title": "Let It Be",
-      "artist": "The Beatles",
-      "album": "Let It Be",
-      "duration": 243,
-      "genre": "Rock"
-    },
-    {
-      "id": "48",
-      "title": "Yesterday",
-      "artist": "The Beatles",
-      "album": "Help!",
-      "duration": 125,
-      "genre": "Rock"
-    },
-    {
-      "id": "49",
-      "title": "Hotel California",
-      "artist": "Eagles",
-      "album": "Hotel California",
-      "duration": 391,
-      "genre": "Classic Rock"
-    },
-    {
-      "id": "50",
-      "title": "Stairway to Heaven",
-      "artist": "Led Zeppelin",
-      "album": "Led Zeppelin IV",
-      "duration": 482,
-      "genre": "Hard Rock"
-    },
-    {
-      "id": "51",
-      "title": "Bohemian Rhapsody",
-      "artist": "Queen",
-      "album": "A Night at the Opera",
-      "duration": 354,
-      "genre": "Rock"
-    },
-    {
-      "id": "52",
-      "title": "Don't Stop Me Now",
-      "artist": "Queen",
-      "album": "Jazz",
-      "duration": 210,
-      "genre": "Rock"
-    },
-    {
-      "id": "53",
-      "title": "Another One Bites The Dust",
-      "artist": "Queen",
-      "album": "The Game",
-      "duration": 215,
-      "genre": "Rock"
-    },
-    {
-      "id": "54",
-      "title": "Sweet Child o' Mine",
-      "artist": "Guns N' Roses",
-      "album": "Appetite for Destruction",
-      "duration": 356,
-      "genre": "Hard Rock"
-    },
-    {
-      "id": "55",
-      "title": "November Rain",
-      "artist": "Guns N' Roses",
-      "album": "Use Your Illusion I",
-      "duration": 537,
-      "genre": "Hard Rock"
-    },
-    {
-      "id": "56",
-      "title": "Back In Black",
-      "artist": "AC/DC",
-      "album": "Back In Black",
-      "duration": 255,
-      "genre": "Hard Rock"
-    },
-    {
-      "id": "57",
-      "title": "Thunderstruck",
-      "artist": "AC/DC",
-      "album": "The Razors Edge",
-      "duration": 292,
-      "genre": "Hard Rock"
-    },
-    {
-      "id": "58",
-      "title": "Livin' On A Prayer",
-      "artist": "Bon Jovi",
-      "album": "Slippery When Wet",
-      "duration": 250,
-      "genre": "Rock"
-    },
-    {
-      "id": "59",
-      "title": "Eye of the Tiger",
-      "artist": "Survivor",
-      "album": "Eye of the Tiger",
-      "duration": 245,
-      "genre": "Rock"
-    },
-    {
-      "id": "60",
-      "title": "Smells Like Teen Spirit",
-      "artist": "Nirvana",
-      "album": "Nevermind",
-      "duration": 301,
-      "genre": "Grunge"
-    },
-    {
-      "id": "61",
-      "title": "Come As You Are",
-      "artist": "Nirvana",
-      "album": "Nevermind",
-      "duration": 219,
-      "genre": "Grunge"
-    },
-    {
-      "id": "62",
-      "title": "Black Dog",
-      "artist": "Led Zeppelin",
-      "album": "Led Zeppelin IV",
-      "duration": 296,
-      "genre": "Hard Rock"
-    },
-    {
-      "id": "63",
-      "title": "Kashmir",
-      "artist": "Led Zeppelin",
-      "album": "Physical Graffiti",
-      "duration": 515,
-      "genre": "Hard Rock"
-    },
-    {
-      "id": "64",
-      "title": "Wish You Were Here",
-      "artist": "Pink Floyd",
-      "album": "Wish You Were Here",
-      "duration": 334,
-      "genre": "Progressive Rock"
-    },
-    {
-      "id": "65",
-      "title": "Comfortably Numb",
-      "artist": "Pink Floyd",
-      "album": "The Wall",
-      "duration": 384,
-      "genre": "Progressive Rock"
-    },
-    {
-      "id": "66",
-      "title": "Another Brick in the Wall, Pt. 2",
-      "artist": "Pink Floyd",
-      "album": "The Wall",
-      "duration": 240,
-      "genre": "Progressive Rock"
-    },
-    {
-      "id": "67",
-      "title": "Wonderwall",
-      "artist": "Oasis",
-      "album": "(What's the Story) Morning Glory?",
-      "duration": 258,
-      "genre": "Britpop"
-    },
-    {
-      "id": "68",
-      "title": "Don't Look Back in Anger",
-      "artist": "Oasis",
-      "album": "(What's the Story) Morning Glory?",
-      "duration": 269,
-      "genre": "Britpop"
-    },
-    {
-      "id": "69",
-      "title": "Yellow",
-      "artist": "Coldplay",
-      "album": "Parachutes",
-      "duration": 267,
-      "genre": "Alternative Rock"
-    },
-    {
-      "id": "70",
-      "title": "Viva La Vida",
-      "artist": "Coldplay",
-      "album": "Viva la Vida or Death and All His Friends",
-      "duration": 242,
-      "genre": "Alternative Rock"
-    },
-    {
-      "id": "71",
-      "title": "Paradise",
-      "artist": "Coldplay",
-      "album": "Mylo Xyloto",
-      "duration": 278,
-      "genre": "Alternative Rock"
-    },
-    {
-      "id": "72",
-      "title": "Fix You",
-      "artist": "Coldplay",
-      "album": "X&Y",
-      "duration": 294,
-      "genre": "Alternative Rock"
-    },
-    {
-      "id": "73",
-      "title": "Radioactive",
-      "artist": "Imagine Dragons",
-      "album": "Night Visions",
-      "duration": 186,
-      "genre": "Alternative Rock"
-    },
-    {
-      "id": "74",
-      "title": "Pompeii",
-      "artist": "Bastille",
-      "album": "Bad Blood",
-      "duration": 213,
-      "genre": "Indie Pop"
-    },
-    {
-      "id": "75",
-      "title": "Hallelujah",
-      "artist": "Leonard Cohen",
-      "album": "Various Positions",
-      "duration": 282,
-      "genre": "Folk"
-    },
-    {
-      "id": "76",
-      "title": "Thinking Bout You",
-      "artist": "Frank Ocean",
-      "album": "Channel Orange",
-      "duration": 218,
-      "genre": "R&B"
-    },
-    {
-      "id": "77",
-      "title": "Pyramids",
-      "artist": "Frank Ocean",
-      "album": "Channel Orange",
-      "duration": 497,
-      "genre": "R&B"
-    },
-    {
-      "id": "78",
-      "title": "Summertime Sadness",
-      "artist": "Lana Del Rey",
-      "album": "Born to Die",
-      "duration": 278,
-      "genre": "Indie Pop"
-    },
-    {
-      "id": "79",
-      "title": "Young and Beautiful",
-      "artist": "Lana Del Rey",
-      "album": "The Great Gatsby: Music from Baz Luhrmann's Film",
-      "duration": 232,
-      "genre": "Indie Pop"
+      "genre": "Pop",
+      "artist_id": 1,
+      "album_id": 1
     },
     {
       "id": "80",
       "title": "Can't Feel My Face",
-      "artist": "The Weeknd",
-      "album": "Beauty Behind the Madness",
       "duration": 215,
-      "genre": "Pop"
+      "genre": "Pop",
+      "artist_id": 1,
+      "album_id": 69
     },
     {
-      "id": "81",
-      "title": "I Feel It Coming",
-      "artist": "The Weeknd feat. Daft Punk",
-      "album": "Starboy",
-      "duration": 244,
-      "genre": "Pop"
+      "id": "2",
+      "title": "Shape of You",
+      "duration": 233,
+      "genre": "Pop",
+      "artist_id": 2,
+      "album_id": 2
     },
     {
-      "id": "82",
-      "title": "Stay",
-      "artist": "Rihanna feat. Mikky Ekko",
-      "album": "Unapologetic",
-      "duration": 240,
-      "genre": "Pop"
+      "id": "26",
+      "title": "Perfect",
+      "duration": 263,
+      "genre": "Pop",
+      "artist_id": 2,
+      "album_id": 2
     },
     {
-      "id": "83",
-      "title": "Diamonds",
-      "artist": "Rihanna",
-      "album": "Unapologetic",
-      "duration": 231,
-      "genre": "Pop"
+      "id": "21",
+      "title": "Thinking Out Loud",
+      "duration": 281,
+      "genre": "Pop",
+      "artist_id": 2,
+      "album_id": 21
     },
     {
-      "id": "84",
-      "title": "We Found Love",
-      "artist": "Rihanna feat. Calvin Harris",
-      "album": "Talk That Talk",
-      "duration": 213,
-      "genre": "Pop"
+      "id": "3",
+      "title": "Dance Monkey",
+      "duration": 209,
+      "genre": "Alternative",
+      "artist_id": 3,
+      "album_id": 3
     },
     {
-      "id": "85",
-      "title": "Only Girl (In the World)",
-      "artist": "Rihanna",
-      "album": "Loud",
-      "duration": 206,
-      "genre": "Pop"
+      "id": "4",
+      "title": "Someone You Loved",
+      "duration": 182,
+      "genre": "Pop",
+      "artist_id": 4,
+      "album_id": 4
     },
     {
-      "id": "86",
-      "title": "Paint It, Black",
-      "artist": "The Rolling Stones",
-      "album": "Aftermath",
+      "id": "5",
+      "title": "Levitating",
+      "duration": 203,
+      "genre": "Pop",
+      "artist_id": 5,
+      "album_id": 5
+    },
+    {
+      "id": "6",
+      "title": "bad guy",
+      "duration": 194,
+      "genre": "Alternative",
+      "artist_id": 6,
+      "album_id": 6
+    },
+    {
+      "id": "7",
+      "title": "Se\u00f1orita",
+      "duration": 191,
+      "genre": "Pop",
+      "artist_id": 7,
+      "album_id": 7
+    },
+    {
+      "id": "8",
+      "title": "Rockstar",
+      "duration": 218,
+      "genre": "Hip Hop",
+      "artist_id": 8,
+      "album_id": 8
+    },
+    {
+      "id": "9",
+      "title": "Old Town Road",
+      "duration": 157,
+      "genre": "Country Rap",
+      "artist_id": 9,
+      "album_id": 9
+    },
+    {
+      "id": "10",
+      "title": "Sunflower",
+      "duration": 158,
+      "genre": "Hip Hop",
+      "artist_id": 10,
+      "album_id": 10
+    },
+    {
+      "id": "11",
+      "title": "Circles",
+      "duration": 215,
+      "genre": "Hip Hop",
+      "artist_id": 11,
+      "album_id": 11
+    },
+    {
+      "id": "12",
+      "title": "Shallow",
+      "duration": 215,
+      "genre": "Pop",
+      "artist_id": 12,
+      "album_id": 12
+    },
+    {
+      "id": "13",
+      "title": "Havana",
+      "duration": 217,
+      "genre": "Pop",
+      "artist_id": 13,
+      "album_id": 13
+    },
+    {
+      "id": "14",
+      "title": "Believer",
+      "duration": 204,
+      "genre": "Alternative Rock",
+      "artist_id": 14,
+      "album_id": 14
+    },
+    {
+      "id": "32",
+      "title": "Thunder",
+      "duration": 187,
+      "genre": "Alternative Rock",
+      "artist_id": 14,
+      "album_id": 14
+    },
+    {
+      "id": "73",
+      "title": "Radioactive",
+      "duration": 186,
+      "genre": "Alternative Rock",
+      "artist_id": 14,
+      "album_id": 63
+    },
+    {
+      "id": "15",
+      "title": "Memories",
+      "duration": 189,
+      "genre": "Pop Rock",
+      "artist_id": 15,
+      "album_id": 15
+    },
+    {
+      "id": "16",
+      "title": "Uptown Funk",
+      "duration": 269,
+      "genre": "Funk",
+      "artist_id": 16,
+      "album_id": 16
+    },
+    {
+      "id": "17",
+      "title": "Happy",
+      "duration": 233,
+      "genre": "Funk Pop",
+      "artist_id": 17,
+      "album_id": 17
+    },
+    {
+      "id": "18",
+      "title": "Shake It Off",
+      "duration": 242,
+      "genre": "Pop",
+      "artist_id": 18,
+      "album_id": 18
+    },
+    {
+      "id": "19",
+      "title": "Despacito",
+      "duration": 229,
+      "genre": "Reggaeton",
+      "artist_id": 19,
+      "album_id": 19
+    },
+    {
+      "id": "20",
+      "title": "Sorry",
       "duration": 200,
-      "genre": "Rock"
+      "genre": "Pop",
+      "artist_id": 20,
+      "album_id": 20
     },
     {
-      "id": "87",
-      "title": "(I Can't Get No) Satisfaction",
-      "artist": "The Rolling Stones",
-      "album": "Out of Our Heads",
+      "id": "22",
+      "title": "Closer",
+      "duration": 244,
+      "genre": "EDM",
+      "artist_id": 21,
+      "album_id": 22
+    },
+    {
+      "id": "23",
+      "title": "God's Plan",
+      "duration": 198,
+      "genre": "Hip Hop",
+      "artist_id": 22,
+      "album_id": 23
+    },
+    {
+      "id": "24",
+      "title": "One Dance",
+      "duration": 173,
+      "genre": "Hip Hop",
+      "artist_id": 23,
+      "album_id": 24
+    },
+    {
+      "id": "25",
+      "title": "Sicko Mode",
+      "duration": 312,
+      "genre": "Hip Hop",
+      "artist_id": 24,
+      "album_id": 25
+    },
+    {
+      "id": "27",
+      "title": "Girls Like You",
+      "duration": 235,
+      "genre": "Pop Rock",
+      "artist_id": 25,
+      "album_id": 26
+    },
+    {
+      "id": "28",
+      "title": "We Don't Talk Anymore",
+      "duration": 217,
+      "genre": "Pop",
+      "artist_id": 26,
+      "album_id": 27
+    },
+    {
+      "id": "29",
+      "title": "Hips Don't Lie",
+      "duration": 218,
+      "genre": "Latin Pop",
+      "artist_id": 27,
+      "album_id": 28
+    },
+    {
+      "id": "30",
+      "title": "See You Again",
+      "duration": 229,
+      "genre": "Hip Hop",
+      "artist_id": 28,
+      "album_id": 29
+    },
+    {
+      "id": "31",
+      "title": "Counting Stars",
+      "duration": 257,
+      "genre": "Pop Rock",
+      "artist_id": 29,
+      "album_id": 30
+    },
+    {
+      "id": "33",
+      "title": "Rolling in the Deep",
       "duration": 228,
-      "genre": "Rock"
+      "genre": "Soul",
+      "artist_id": 30,
+      "album_id": 31
     },
     {
-      "id": "88",
-      "title": "Sympathy for the Devil",
-      "artist": "The Rolling Stones",
-      "album": "Beggars Banquet",
-      "duration": 386,
-      "genre": "Rock"
+      "id": "34",
+      "title": "Someone Like You",
+      "duration": 285,
+      "genre": "Soul",
+      "artist_id": 30,
+      "album_id": 31
     },
     {
-      "id": "89",
-      "title": "Gimme Shelter",
-      "artist": "The Rolling Stones",
-      "album": "Let It Bleed",
-      "duration": 272,
-      "genre": "Rock"
+      "id": "35",
+      "title": "Hello",
+      "duration": 295,
+      "genre": "Soul",
+      "artist_id": 30,
+      "album_id": 32
     },
     {
-      "id": "90",
-      "title": "You're So Vain",
-      "artist": "Carly Simon",
-      "album": "No Secrets",
-      "duration": 260,
-      "genre": "Soft Rock"
+      "id": "36",
+      "title": "Bad Romance",
+      "duration": 295,
+      "genre": "Pop",
+      "artist_id": 31,
+      "album_id": 33
+    },
+    {
+      "id": "37",
+      "title": "Poker Face",
+      "duration": 235,
+      "genre": "Pop",
+      "artist_id": 31,
+      "album_id": 34
+    },
+    {
+      "id": "38",
+      "title": "Firework",
+      "duration": 228,
+      "genre": "Pop",
+      "artist_id": 32,
+      "album_id": 35
+    },
+    {
+      "id": "39",
+      "title": "Teenage Dream",
+      "duration": 207,
+      "genre": "Pop",
+      "artist_id": 32,
+      "album_id": 35
+    },
+    {
+      "id": "40",
+      "title": "Roar",
+      "duration": 223,
+      "genre": "Pop",
+      "artist_id": 32,
+      "album_id": 36
+    },
+    {
+      "id": "41",
+      "title": "Uptown Girl",
+      "duration": 153,
+      "genre": "Soft Rock",
+      "artist_id": 33,
+      "album_id": 37
+    },
+    {
+      "id": "42",
+      "title": "Billie Jean",
+      "duration": 293,
+      "genre": "Pop",
+      "artist_id": 34,
+      "album_id": 38
+    },
+    {
+      "id": "43",
+      "title": "Thriller",
+      "duration": 357,
+      "genre": "Pop",
+      "artist_id": 34,
+      "album_id": 38
+    },
+    {
+      "id": "45",
+      "title": "Beat It",
+      "duration": 258,
+      "genre": "Pop",
+      "artist_id": 34,
+      "album_id": 38
     },
     {
       "id": "91",
       "title": "Wanna Be Startin' Somethin'",
-      "artist": "Michael Jackson",
-      "album": "Thriller",
       "duration": 362,
-      "genre": "Pop"
+      "genre": "Pop",
+      "artist_id": 34,
+      "album_id": 38
     },
     {
       "id": "92",
       "title": "Human Nature",
-      "artist": "Michael Jackson",
-      "album": "Thriller",
       "duration": 248,
-      "genre": "Pop"
+      "genre": "Pop",
+      "artist_id": 34,
+      "album_id": 38
     },
     {
-      "id": "93",
-      "title": "Smooth",
-      "artist": "Santana feat. Rob Thomas",
-      "album": "Supernatural",
+      "id": "44",
+      "title": "Smooth Criminal",
+      "duration": 257,
+      "genre": "Pop",
+      "artist_id": 34,
+      "album_id": 39
+    },
+    {
+      "id": "46",
+      "title": "Hey Jude",
+      "duration": 431,
+      "genre": "Rock",
+      "artist_id": 35,
+      "album_id": 40
+    },
+    {
+      "id": "47",
+      "title": "Let It Be",
+      "duration": 243,
+      "genre": "Rock",
+      "artist_id": 35,
+      "album_id": 41
+    },
+    {
+      "id": "48",
+      "title": "Yesterday",
+      "duration": 125,
+      "genre": "Rock",
+      "artist_id": 35,
+      "album_id": 42
+    },
+    {
+      "id": "49",
+      "title": "Hotel California",
+      "duration": 391,
+      "genre": "Classic Rock",
+      "artist_id": 36,
+      "album_id": 43
+    },
+    {
+      "id": "50",
+      "title": "Stairway to Heaven",
+      "duration": 482,
+      "genre": "Hard Rock",
+      "artist_id": 37,
+      "album_id": 44
+    },
+    {
+      "id": "62",
+      "title": "Black Dog",
       "duration": 296,
-      "genre": "Rock"
+      "genre": "Hard Rock",
+      "artist_id": 37,
+      "album_id": 44
     },
     {
-      "id": "94",
-      "title": "Drops of Jupiter",
-      "artist": "Train",
-      "album": "Drops of Jupiter",
+      "id": "63",
+      "title": "Kashmir",
+      "duration": 515,
+      "genre": "Hard Rock",
+      "artist_id": 37,
+      "album_id": 55
+    },
+    {
+      "id": "51",
+      "title": "Bohemian Rhapsody",
+      "duration": 354,
+      "genre": "Rock",
+      "artist_id": 38,
+      "album_id": 45
+    },
+    {
+      "id": "52",
+      "title": "Don't Stop Me Now",
+      "duration": 210,
+      "genre": "Rock",
+      "artist_id": 38,
+      "album_id": 46
+    },
+    {
+      "id": "53",
+      "title": "Another One Bites The Dust",
       "duration": 215,
-      "genre": "Pop Rock"
+      "genre": "Rock",
+      "artist_id": 38,
+      "album_id": 47
     },
     {
-      "id": "95",
-      "title": "Boulevard of Broken Dreams",
-      "artist": "Green Day",
-      "album": "American Idiot",
-      "duration": 262,
-      "genre": "Punk Rock"
+      "id": "54",
+      "title": "Sweet Child o' Mine",
+      "duration": 356,
+      "genre": "Hard Rock",
+      "artist_id": 39,
+      "album_id": 48
     },
     {
-      "id": "96",
-      "title": "American Idiot",
-      "artist": "Green Day",
-      "album": "American Idiot",
-      "duration": 175,
-      "genre": "Punk Rock"
+      "id": "55",
+      "title": "November Rain",
+      "duration": 537,
+      "genre": "Hard Rock",
+      "artist_id": 39,
+      "album_id": 49
+    },
+    {
+      "id": "56",
+      "title": "Back In Black",
+      "duration": 255,
+      "genre": "Hard Rock",
+      "artist_id": 40,
+      "album_id": 50
+    },
+    {
+      "id": "57",
+      "title": "Thunderstruck",
+      "duration": 292,
+      "genre": "Hard Rock",
+      "artist_id": 40,
+      "album_id": 51
+    },
+    {
+      "id": "58",
+      "title": "Livin' On A Prayer",
+      "duration": 250,
+      "genre": "Rock",
+      "artist_id": 41,
+      "album_id": 52
+    },
+    {
+      "id": "59",
+      "title": "Eye of the Tiger",
+      "duration": 245,
+      "genre": "Rock",
+      "artist_id": 42,
+      "album_id": 53
+    },
+    {
+      "id": "60",
+      "title": "Smells Like Teen Spirit",
+      "duration": 301,
+      "genre": "Grunge",
+      "artist_id": 43,
+      "album_id": 54
+    },
+    {
+      "id": "61",
+      "title": "Come As You Are",
+      "duration": 219,
+      "genre": "Grunge",
+      "artist_id": 43,
+      "album_id": 54
+    },
+    {
+      "id": "64",
+      "title": "Wish You Were Here",
+      "duration": 334,
+      "genre": "Progressive Rock",
+      "artist_id": 44,
+      "album_id": 56
+    },
+    {
+      "id": "65",
+      "title": "Comfortably Numb",
+      "duration": 384,
+      "genre": "Progressive Rock",
+      "artist_id": 44,
+      "album_id": 57
+    },
+    {
+      "id": "66",
+      "title": "Another Brick in the Wall, Pt. 2",
+      "duration": 240,
+      "genre": "Progressive Rock",
+      "artist_id": 44,
+      "album_id": 57
     },
     {
       "id": "97",
       "title": "Time",
-      "artist": "Pink Floyd",
-      "album": "The Dark Side of the Moon",
       "duration": 413,
-      "genre": "Progressive Rock"
+      "genre": "Progressive Rock",
+      "artist_id": 44,
+      "album_id": 83
     },
     {
       "id": "98",
       "title": "Money",
-      "artist": "Pink Floyd",
-      "album": "The Dark Side of the Moon",
       "duration": 382,
-      "genre": "Progressive Rock"
+      "genre": "Progressive Rock",
+      "artist_id": 44,
+      "album_id": 83
+    },
+    {
+      "id": "67",
+      "title": "Wonderwall",
+      "duration": 258,
+      "genre": "Britpop",
+      "artist_id": 45,
+      "album_id": 58
+    },
+    {
+      "id": "68",
+      "title": "Don't Look Back in Anger",
+      "duration": 269,
+      "genre": "Britpop",
+      "artist_id": 45,
+      "album_id": 58
+    },
+    {
+      "id": "69",
+      "title": "Yellow",
+      "duration": 267,
+      "genre": "Alternative Rock",
+      "artist_id": 46,
+      "album_id": 59
+    },
+    {
+      "id": "70",
+      "title": "Viva La Vida",
+      "duration": 242,
+      "genre": "Alternative Rock",
+      "artist_id": 46,
+      "album_id": 60
+    },
+    {
+      "id": "71",
+      "title": "Paradise",
+      "duration": 278,
+      "genre": "Alternative Rock",
+      "artist_id": 46,
+      "album_id": 61
+    },
+    {
+      "id": "72",
+      "title": "Fix You",
+      "duration": 294,
+      "genre": "Alternative Rock",
+      "artist_id": 46,
+      "album_id": 62
+    },
+    {
+      "id": "74",
+      "title": "Pompeii",
+      "duration": 213,
+      "genre": "Indie Pop",
+      "artist_id": 47,
+      "album_id": 64
+    },
+    {
+      "id": "75",
+      "title": "Hallelujah",
+      "duration": 282,
+      "genre": "Folk",
+      "artist_id": 48,
+      "album_id": 65
+    },
+    {
+      "id": "76",
+      "title": "Thinking Bout You",
+      "duration": 218,
+      "genre": "R&B",
+      "artist_id": 49,
+      "album_id": 66
+    },
+    {
+      "id": "77",
+      "title": "Pyramids",
+      "duration": 497,
+      "genre": "R&B",
+      "artist_id": 49,
+      "album_id": 66
+    },
+    {
+      "id": "78",
+      "title": "Summertime Sadness",
+      "duration": 278,
+      "genre": "Indie Pop",
+      "artist_id": 50,
+      "album_id": 67
+    },
+    {
+      "id": "79",
+      "title": "Young and Beautiful",
+      "duration": 232,
+      "genre": "Indie Pop",
+      "artist_id": 50,
+      "album_id": 68
+    },
+    {
+      "id": "81",
+      "title": "I Feel It Coming",
+      "duration": 244,
+      "genre": "Pop",
+      "artist_id": 51,
+      "album_id": 70
+    },
+    {
+      "id": "82",
+      "title": "Stay",
+      "duration": 240,
+      "genre": "Pop",
+      "artist_id": 52,
+      "album_id": 71
+    },
+    {
+      "id": "83",
+      "title": "Diamonds",
+      "duration": 231,
+      "genre": "Pop",
+      "artist_id": 53,
+      "album_id": 72
+    },
+    {
+      "id": "85",
+      "title": "Only Girl (In the World)",
+      "duration": 206,
+      "genre": "Pop",
+      "artist_id": 53,
+      "album_id": 74
+    },
+    {
+      "id": "84",
+      "title": "We Found Love",
+      "duration": 213,
+      "genre": "Pop",
+      "artist_id": 54,
+      "album_id": 73
+    },
+    {
+      "id": "86",
+      "title": "Paint It, Black",
+      "duration": 200,
+      "genre": "Rock",
+      "artist_id": 55,
+      "album_id": 75
+    },
+    {
+      "id": "87",
+      "title": "(I Can't Get No) Satisfaction",
+      "duration": 228,
+      "genre": "Rock",
+      "artist_id": 55,
+      "album_id": 76
+    },
+    {
+      "id": "88",
+      "title": "Sympathy for the Devil",
+      "duration": 386,
+      "genre": "Rock",
+      "artist_id": 55,
+      "album_id": 77
+    },
+    {
+      "id": "89",
+      "title": "Gimme Shelter",
+      "duration": 272,
+      "genre": "Rock",
+      "artist_id": 55,
+      "album_id": 78
+    },
+    {
+      "id": "90",
+      "title": "You're So Vain",
+      "duration": 260,
+      "genre": "Soft Rock",
+      "artist_id": 56,
+      "album_id": 79
+    },
+    {
+      "id": "93",
+      "title": "Smooth",
+      "duration": 296,
+      "genre": "Rock",
+      "artist_id": 57,
+      "album_id": 80
+    },
+    {
+      "id": "94",
+      "title": "Drops of Jupiter",
+      "duration": 215,
+      "genre": "Pop Rock",
+      "artist_id": 58,
+      "album_id": 81
+    },
+    {
+      "id": "95",
+      "title": "Boulevard of Broken Dreams",
+      "duration": 262,
+      "genre": "Punk Rock",
+      "artist_id": 59,
+      "album_id": 82
+    },
+    {
+      "id": "96",
+      "title": "American Idiot",
+      "duration": 175,
+      "genre": "Punk Rock",
+      "artist_id": 59,
+      "album_id": 82
     },
     {
       "id": "99",
       "title": "Losing My Religion",
-      "artist": "R.E.M.",
-      "album": "Out of Time",
       "duration": 269,
-      "genre": "Alternative Rock"
+      "genre": "Alternative Rock",
+      "artist_id": 60,
+      "album_id": 84
     },
     {
       "id": "100",
       "title": "Everybody Hurts",
-      "artist": "R.E.M.",
-      "album": "Automatic for the People",
       "duration": 276,
-      "genre": "Alternative Rock"
+      "genre": "Alternative Rock",
+      "artist_id": 60,
+      "album_id": 85
     },
     {
       "id": "101",
       "title": "Numb",
-      "artist": "Linkin Park",
-      "album": "Meteora",
       "duration": 269,
-      "genre": "Nu Metal"
+      "genre": "Nu Metal",
+      "artist_id": 61,
+      "album_id": 86
     },
     {
       "id": "102",
       "title": "Fade To Black",
-      "artist": "Metallica",
-      "album": "Ride the Lightning",
       "duration": 296,
-      "genre": "Metal"
+      "genre": "Metal",
+      "artist_id": 62,
+      "album_id": 87
     },
     {
       "id": "103",
       "title": "Tears Don't Fall",
-      "artist": "Bullet Foy My Valentine",
-      "album": "The Poison",
       "duration": 296,
-      "genre": "Metalcore"
+      "genre": "Metalcore",
+      "artist_id": 63,
+      "album_id": 88
     }
   ]
 }
