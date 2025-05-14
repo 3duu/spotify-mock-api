@@ -6,11 +6,12 @@ import (
 	"gorm.io/gorm"
 	"net/http"
 	"spotify-mock-api/internal/models"
+	"strconv"
 	"time"
 )
 
 type PlaylistResponse struct {
-	ID          string    `json:"id"`
+	ID          int       `json:"id"`
 	Title       string    `json:"title"`
 	Subtitle    string    `json:"subtitle"`
 	Cover       string    `json:"cover"`
@@ -28,16 +29,16 @@ func GetRecentPlaylistsByUser(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		// Parse userId to int
-		/*userID, err := strconv.Atoi(userIDParam)
+		userID, err := strconv.Atoi(userIDParam)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "userId must be an integer"})
 			return
-		}*/
+		}
 
 		// Fetch the 10 most recently updated playlists for this user
 		var pls []models.Playlist
 		if err := db.
-			//Where("user_id = ?", userID).
+			Where("user_id = ?", userID).
 			Order("last_updated DESC").
 			Limit(10).
 			Find(&pls).

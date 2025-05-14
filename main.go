@@ -33,6 +33,7 @@ func main() {
 		&models.Album{},
 		&models.Song{},
 		&models.Playlist{},
+		&models.Podcast{},
 		&models.LibraryEntry{},
 		&models.User{},
 	); err != nil {
@@ -43,9 +44,6 @@ func main() {
 	if err := seedDefaults(db); err != nil {
 		log.Fatal("seeding defaults failed:", err)
 	}
-
-	// Load songs from JSON into database
-	//loadSongs("data/songs.json")
 
 	r := gin.Default()
 
@@ -70,7 +68,7 @@ func main() {
 	r.GET("/users/:userId/recent-playlists", handlers.GetRecentPlaylistsByUser(db))
 	r.GET("/library", handlers.GetLibraryData(db))
 
-	r.GET("/me", handlers.GetCurrentUser)
+	r.GET("/me", handlers.GetCurrentUser(db))
 
 	// Start server
 	localIP := utils.GetLocalIP()
@@ -87,8 +85,9 @@ type Defaults struct {
 	Albums         []models.Album        `json:"albums"`
 	Artists        []models.Artist       `json:"artists"`
 	Playlists      []models.Playlist     `json:"playlists"`
+	Podcasts       []models.Podcast      `json:"podcasts"`
 	LibraryEntries []models.LibraryEntry `json:"libraryEntries"`
-	User           models.User           `json:"user"`
+	Users          []models.User         `json:"users"`
 }
 
 func seedDefaults(db *gorm.DB) error {
@@ -147,6 +146,16 @@ func seedDefaults(db *gorm.DB) error {
 		log.Printf("seeded %d playlists", len(defs.Playlists))
 	}
 
+	// Seed Podcasts
+	var pdCount int64
+	db.Model(&models.Podcast{}).Count(&pdCount)
+	if pdCount == 0 {
+		if err := db.Create(&defs.Podcasts).Error; err != nil {
+			return fmt.Errorf("insert podcasts: %w", err)
+		}
+		log.Printf("seeded %d podcasts", len(defs.Podcasts))
+	}
+
 	// Seed LibraryEntries
 	var libCount int64
 	db.Model(&models.LibraryEntry{}).Count(&libCount)
@@ -164,8 +173,8 @@ func seedDefaults(db *gorm.DB) error {
 		if _, err := os.Stat("media/avatar.jpg"); err != nil {
 			log.Println("warning: avatar.jpg not found; using placeholder")
 		}
-		if err := db.Create(&defs.User).Error; err != nil {
-			return fmt.Errorf("insert user: %w", err)
+		if err := db.Create(&defs.Users).Error; err != nil {
+			return fmt.Errorf("insert users: %w", err)
 		}
 		log.Println("seeded default user profile")
 	}

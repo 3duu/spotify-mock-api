@@ -1,7 +1,7 @@
 {
   "playlists": [
     {
-      "id": "liked-songs",
+      "id": 1,
       "title": "Liked Songs",
       "cover": "/media/playlist-art.jpg",
       "user_id": 1,
@@ -9,7 +9,7 @@
       "songs": []
     },
     {
-      "id": "new-releases",
+      "id": 2,
       "title": "New Releases",
       "cover": "/media/playlist-art.jpg",
       "user_id": 1,
@@ -20,13 +20,15 @@
   "podcasts": [
     {
       "id": 1,
-      "name": "Podcast for Women",
-      "cover": "/media/playlist-art.jpg"
+      "title": "Podcast for Women",
+      "cover": "/media/podcast-art.jpg",
+      "hosts": ["mina brown"]
     },
     {
       "id": 2,
-      "name": "Podcast for Men",
-      "cover": "/media/playlist-art.jpg"
+      "title": "Podcast for Men",
+      "cover": "/media/podcast-art.jpg",
+      "hosts": ["mano brown"]
     }
   ],
   "libraryEntries": [
@@ -40,18 +42,18 @@
     },
     {
       "id": "lib-albums",
-      "type": "album",
+      "type": "title",
       "referenceId": "new-releases",
       "title": "New Releases",
       "subtitle": "Album • varies",
       "iconURL": "/media/album.jpg"
     }
   ],
-  "user": {
+  "users": [{
     "id": 1,
     "name": "Eduardo Porto",
     "image": "/media/user-image.jpg"
-  },
+  }],
   "artists": [
     {
       "name": "The Weeknd",
@@ -309,442 +311,442 @@
   "albums": [
     {
       "album_id": 1,
-      "album": "After Hours",
+      "title": "After Hours",
       "artist_id": 1
     },
     {
       "album_id": 69,
-      "album": "Beauty Behind the Madness",
+      "title": "Beauty Behind the Madness",
       "artist_id": 1
     },
     {
       "album_id": 2,
-      "album": "\u00f7",
+      "title": "\u00f7",
       "artist_id": 2
     },
     {
       "album_id": 21,
-      "album": "x",
+      "title": "x",
       "artist_id": 2
     },
     {
       "album_id": 3,
-      "album": "The Kids Are Coming",
+      "title": "The Kids Are Coming",
       "artist_id": 3
     },
     {
       "album_id": 4,
-      "album": "Divinely Uninspired to a Hellish Extent",
+      "title": "Divinely Uninspired to a Hellish Extent",
       "artist_id": 4
     },
     {
       "album_id": 5,
-      "album": "Future Nostalgia",
+      "title": "Future Nostalgia",
       "artist_id": 5
     },
     {
       "album_id": 6,
-      "album": "When We All Fall Asleep, Where Do We Go?",
+      "title": "When We All Fall Asleep, Where Do We Go?",
       "artist_id": 6
     },
     {
       "album_id": 7,
-      "album": "Se\u00f1orita (Single)",
+      "title": "Se\u00f1orita (Single)",
       "artist_id": 7
     },
     {
       "album_id": 8,
-      "album": "Beerbongs & Bentleys",
+      "title": "Beerbongs & Bentleys",
       "artist_id": 8
     },
     {
       "album_id": 9,
-      "album": "7 EP",
+      "title": "7 EP",
       "artist_id": 9
     },
     {
       "album_id": 10,
-      "album": "Spider-Man: Into the Spider-Verse",
+      "title": "Spider-Man: Into the Spider-Verse",
       "artist_id": 10
     },
     {
       "album_id": 11,
-      "album": "Hollywood's Bleeding",
+      "title": "Hollywood's Bleeding",
       "artist_id": 11
     },
     {
       "album_id": 12,
-      "album": "A Star Is Born Soundtrack",
+      "title": "A Star Is Born Soundtrack",
       "artist_id": 12
     },
     {
       "album_id": 13,
-      "album": "Camila",
+      "title": "Camila",
       "artist_id": 13
     },
     {
       "album_id": 14,
-      "album": "Evolve",
+      "title": "Evolve",
       "artist_id": 14
     },
     {
       "album_id": 63,
-      "album": "Night Visions",
+      "title": "Night Visions",
       "artist_id": 14
     },
     {
       "album_id": 15,
-      "album": "Single",
+      "title": "Single",
       "artist_id": 15
     },
     {
       "album_id": 16,
-      "album": "Uptown Special",
+      "title": "Uptown Special",
       "artist_id": 16
     },
     {
       "album_id": 17,
-      "album": "G I R L",
+      "title": "G I R L",
       "artist_id": 17
     },
     {
       "album_id": 18,
-      "album": "1989",
+      "title": "1989",
       "artist_id": 18
     },
     {
       "album_id": 19,
-      "album": "Vida",
+      "title": "Vida",
       "artist_id": 19
     },
     {
       "album_id": 20,
-      "album": "Purpose",
+      "title": "Purpose",
       "artist_id": 20
     },
     {
       "album_id": 22,
-      "album": "Collage",
+      "title": "Collage",
       "artist_id": 21
     },
     {
       "album_id": 23,
-      "album": "Scorpion",
+      "title": "Scorpion",
       "artist_id": 22
     },
     {
       "album_id": 24,
-      "album": "Views",
+      "title": "Views",
       "artist_id": 23
     },
     {
       "album_id": 25,
-      "album": "ASTROWORLD",
+      "title": "ASTROWORLD",
       "artist_id": 24
     },
     {
       "album_id": 26,
-      "album": "Red Pill Blues",
+      "title": "Red Pill Blues",
       "artist_id": 25
     },
     {
       "album_id": 27,
-      "album": "Voicenotes",
+      "title": "Voicenotes",
       "artist_id": 26
     },
     {
       "album_id": 28,
-      "album": "Oral Fixation, Vol. 2",
+      "title": "Oral Fixation, Vol. 2",
       "artist_id": 27
     },
     {
       "album_id": 29,
-      "album": "Furious 7 Soundtrack",
+      "title": "Furious 7 Soundtrack",
       "artist_id": 28
     },
     {
       "album_id": 30,
-      "album": "Native",
+      "title": "Native",
       "artist_id": 29
     },
     {
       "album_id": 31,
-      "album": "21",
+      "title": "21",
       "artist_id": 30
     },
     {
       "album_id": 32,
-      "album": "25",
+      "title": "25",
       "artist_id": 30
     },
     {
       "album_id": 33,
-      "album": "The Fame Monster",
+      "title": "The Fame Monster",
       "artist_id": 31
     },
     {
       "album_id": 34,
-      "album": "The Fame",
+      "title": "The Fame",
       "artist_id": 31
     },
     {
       "album_id": 35,
-      "album": "Teenage Dream",
+      "title": "Teenage Dream",
       "artist_id": 32
     },
     {
       "album_id": 36,
-      "album": "Prism",
+      "title": "Prism",
       "artist_id": 32
     },
     {
       "album_id": 37,
-      "album": "An Innocent Man",
+      "title": "An Innocent Man",
       "artist_id": 33
     },
     {
       "album_id": 38,
-      "album": "Thriller",
+      "title": "Thriller",
       "artist_id": 34
     },
     {
       "album_id": 39,
-      "album": "Bad",
+      "title": "Bad",
       "artist_id": 34
     },
     {
       "album_id": 40,
-      "album": "Hey Jude",
+      "title": "Hey Jude",
       "artist_id": 35
     },
     {
       "album_id": 41,
-      "album": "Let It Be",
+      "title": "Let It Be",
       "artist_id": 35
     },
     {
       "album_id": 42,
-      "album": "Help!",
+      "title": "Help!",
       "artist_id": 35
     },
     {
       "album_id": 43,
-      "album": "Hotel California",
+      "title": "Hotel California",
       "artist_id": 36
     },
     {
       "album_id": 44,
-      "album": "Led Zeppelin IV",
+      "title": "Led Zeppelin IV",
       "artist_id": 37
     },
     {
       "album_id": 55,
-      "album": "Physical Graffiti",
+      "title": "Physical Graffiti",
       "artist_id": 37
     },
     {
       "album_id": 45,
-      "album": "A Night at the Opera",
+      "title": "A Night at the Opera",
       "artist_id": 38
     },
     {
       "album_id": 46,
-      "album": "Jazz",
+      "title": "Jazz",
       "artist_id": 38
     },
     {
       "album_id": 47,
-      "album": "The Game",
+      "title": "The Game",
       "artist_id": 38
     },
     {
       "album_id": 48,
-      "album": "Appetite for Destruction",
+      "title": "Appetite for Destruction",
       "artist_id": 39
     },
     {
       "album_id": 49,
-      "album": "Use Your Illusion I",
+      "title": "Use Your Illusion I",
       "artist_id": 39
     },
     {
       "album_id": 50,
-      "album": "Back In Black",
+      "title": "Back In Black",
       "artist_id": 40
     },
     {
       "album_id": 51,
-      "album": "The Razors Edge",
+      "title": "The Razors Edge",
       "artist_id": 40
     },
     {
       "album_id": 52,
-      "album": "Slippery When Wet",
+      "title": "Slippery When Wet",
       "artist_id": 41
     },
     {
       "album_id": 53,
-      "album": "Eye of the Tiger",
+      "title": "Eye of the Tiger",
       "artist_id": 42
     },
     {
       "album_id": 54,
-      "album": "Nevermind",
+      "title": "Nevermind",
       "artist_id": 43
     },
     {
       "album_id": 56,
-      "album": "Wish You Were Here",
+      "title": "Wish You Were Here",
       "artist_id": 44
     },
     {
       "album_id": 57,
-      "album": "The Wall",
+      "title": "The Wall",
       "artist_id": 44
     },
     {
       "album_id": 83,
-      "album": "The Dark Side of the Moon",
+      "title": "The Dark Side of the Moon",
       "artist_id": 44
     },
     {
       "album_id": 58,
-      "album": "(What's the Story) Morning Glory?",
+      "title": "(What's the Story) Morning Glory?",
       "artist_id": 45
     },
     {
       "album_id": 59,
-      "album": "Parachutes",
+      "title": "Parachutes",
       "artist_id": 46
     },
     {
       "album_id": 60,
-      "album": "Viva la Vida or Death and All His Friends",
+      "title": "Viva la Vida or Death and All His Friends",
       "artist_id": 46
     },
     {
       "album_id": 61,
-      "album": "Mylo Xyloto",
+      "title": "Mylo Xyloto",
       "artist_id": 46
     },
     {
       "album_id": 62,
-      "album": "X&Y",
+      "title": "X&Y",
       "artist_id": 46
     },
     {
       "album_id": 64,
-      "album": "Bad Blood",
+      "title": "Bad Blood",
       "artist_id": 47
     },
     {
       "album_id": 65,
-      "album": "Various Positions",
+      "title": "Various Positions",
       "artist_id": 48
     },
     {
       "album_id": 66,
-      "album": "Channel Orange",
+      "title": "Channel Orange",
       "artist_id": 49
     },
     {
       "album_id": 67,
-      "album": "Born to Die",
+      "title": "Born to Die",
       "artist_id": 50
     },
     {
       "album_id": 68,
-      "album": "The Great Gatsby: Music from Baz Luhrmann's Film",
+      "title": "The Great Gatsby: Music from Baz Luhrmann's Film",
       "artist_id": 50
     },
     {
       "album_id": 70,
-      "album": "Starboy",
+      "title": "Starboy",
       "artist_id": 51
     },
     {
       "album_id": 71,
-      "album": "Unapologetic",
+      "title": "Unapologetic",
       "artist_id": 52
     },
     {
       "album_id": 72,
-      "album": "Unapologetic",
+      "title": "Unapologetic",
       "artist_id": 53
     },
     {
       "album_id": 74,
-      "album": "Loud",
+      "title": "Loud",
       "artist_id": 53
     },
     {
       "album_id": 73,
-      "album": "Talk That Talk",
+      "title": "Talk That Talk",
       "artist_id": 54
     },
     {
       "album_id": 75,
-      "album": "Aftermath",
+      "title": "Aftermath",
       "artist_id": 55
     },
     {
       "album_id": 76,
-      "album": "Out of Our Heads",
+      "title": "Out of Our Heads",
       "artist_id": 55
     },
     {
       "album_id": 77,
-      "album": "Beggars Banquet",
+      "title": "Beggars Banquet",
       "artist_id": 55
     },
     {
       "album_id": 78,
-      "album": "Let It Bleed",
+      "title": "Let It Bleed",
       "artist_id": 55
     },
     {
       "album_id": 79,
-      "album": "No Secrets",
+      "title": "No Secrets",
       "artist_id": 56
     },
     {
       "album_id": 80,
-      "album": "Supernatural",
+      "title": "Supernatural",
       "artist_id": 57
     },
     {
       "album_id": 81,
-      "album": "Drops of Jupiter",
+      "title": "Drops of Jupiter",
       "artist_id": 58
     },
     {
       "album_id": 82,
-      "album": "American Idiot",
+      "title": "American Idiot",
       "artist_id": 59
     },
     {
       "album_id": 84,
-      "album": "Out of Time",
+      "title": "Out of Time",
       "artist_id": 60
     },
     {
       "album_id": 85,
-      "album": "Automatic for the People",
+      "title": "Automatic for the People",
       "artist_id": 60
     },
     {
       "album_id": 86,
-      "album": "Meteora",
+      "title": "Meteora",
       "artist_id": 61
     },
     {
       "album_id": 87,
-      "album": "Ride the Lightning",
+      "title": "Ride the Lightning",
       "artist_id": 62
     },
     {
       "album_id": 88,
-      "album": "The Poison",
+      "title": "The Poison",
       "artist_id": 63
     }
   ],

@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"log"
 	"net/http"
 	"spotify-mock-api/internal/models"
 
@@ -10,9 +9,6 @@ import (
 )
 
 func GetLibraryData(db *gorm.DB) gin.HandlerFunc {
-
-	log.Print("GetLibraryData")
-
 	return func(c *gin.Context) {
 		var playlists []models.Playlist
 		var albums []models.Album
@@ -21,6 +17,14 @@ func GetLibraryData(db *gorm.DB) gin.HandlerFunc {
 		db.Find(&playlists)
 		db.Find(&albums)
 		db.Find(&podcasts)
+
+		// Default cover image for any album missing one
+		const defaultCover = "/media/album-art.jpg"
+		for i := range albums {
+			if albums[i].Cover == "" {
+				albums[i].Cover = defaultCover
+			}
+		}
 
 		c.JSON(http.StatusOK, models.LibraryData{
 			Playlists: playlists,

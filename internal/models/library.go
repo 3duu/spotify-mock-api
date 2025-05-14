@@ -1,12 +1,13 @@
 package models
 
 import (
+	"gorm.io/datatypes"
 	"gorm.io/gorm"
 	"time"
 )
 
 type Playlist struct {
-	ID          string    `json:"id"`
+	ID          int       `json:"id" gorm:"primaryKey"`
 	Title       string    `json:"title"`
 	Cover       string    `json:"cover"`
 	LastUpdated time.Time `gorm:"autoUpdateTime" json:"last_updated"`
@@ -14,24 +15,25 @@ type Playlist struct {
 	Songs       []Song    `gorm:"many2many:playlist_songs;" json:"songs"`
 }
 type Artist struct {
-	ArtistId int    `json:"artist_id"`
+	ArtistId int    `json:"artist_id" gorm:"primaryKey"`
 	Name     string `json:"name"`
 }
 type Album struct {
-	AlbumId int    `json:"album_id"`
-	Title   string `json:"title"`
-	Artist  string `json:"artist"`
-	Cover   string `json:"cover"`
+	AlbumId  int    `json:"album_id" gorm:"primaryKey"`
+	Title    string `json:"title"`
+	ArtistID int    `json:"artist_id"`           // foreign key column
+	Artist   Artist `gorm:"foreignKey:ArtistID"` // association
+	Cover    string `json:"cover"`
 }
 type Podcast struct {
-	ID    string   `json:"id"`
-	Title string   `json:"title"`
-	Hosts []string `json:"hosts"`
-	Art   string   `json:"art"`
+	ID    int            `json:"id" gorm:"primaryKey"`
+	Title string         `json:"title"`
+	Hosts datatypes.JSON `json:"hosts" gorm:"type:json"`
+	Cover string         `json:"cover"`
 }
 
 type Song struct {
-	ID       string `json:"id" gorm:"primaryKey"`
+	ID       string `json:"id"`
 	Title    string `json:"title"`
 	Artist   string `json:"artist"`
 	Album    string `json:"album"`
