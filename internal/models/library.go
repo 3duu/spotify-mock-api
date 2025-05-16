@@ -35,8 +35,8 @@ type Podcast struct {
 type Song struct {
 	ID       string `json:"id"`
 	Title    string `json:"title"`
-	Artist   string `json:"artist"`
-	Album    string `json:"album"`
+	Artist   Artist `json:"artist"`
+	Album    Album  `json:"album"`
 	Genre    string `json:"genre"`
 	Duration int    `json:"duration"`
 }
