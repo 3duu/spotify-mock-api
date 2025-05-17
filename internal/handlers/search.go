@@ -43,14 +43,6 @@ func GetSearch(db *gorm.DB) gin.HandlerFunc {
 		}
 		wildcard := "%" + q + "%"
 
-		/*var songs []models.Song
-		// join artists so we can filter by artists.name
-			db.
-		  Preload("Artist").      // so s.Artist is populated in your response
-		  Joins("LEFT JOIN artists ON artists.id = songs.artist_id").
-		  Where("songs.title LIKE ? OR artists.name LIKE ?", wildcard, wildcard).
-		  Find(&songs)*/
-
 		// 1) Search Songs
 		var songs []models.Song
 		db.Preload("Artist"). // so s.Artist is populated in your response
@@ -63,9 +55,8 @@ func GetSearch(db *gorm.DB) gin.HandlerFunc {
 				ID:       s.ID,
 				Title:    s.Title,
 				Artist:   s.Artist.Name,
-				AudioURL: "media/song.mp3",
-				// optionally derive an album art URL, e.g. from s.Album
-				AlbumArt: s.Album.Cover,
+				AudioURL: "/media/song.mp3",
+				AlbumArt: "/media/album-art.jpg",
 			}
 		}
 
@@ -75,9 +66,9 @@ func GetSearch(db *gorm.DB) gin.HandlerFunc {
 		artistRes := make([]ArtistResponse, len(artists))
 		for i, a := range artists {
 			artistRes[i] = ArtistResponse{
-				ID:   a.ArtistId,
-				Name: a.Name,
-				//Image: a., // assuming your model has Image field
+				ID:    a.ArtistId,
+				Name:  a.Name,
+				Image: "/media/album-art.jpg",
 			}
 		}
 
@@ -102,7 +93,7 @@ func GetSearch(db *gorm.DB) gin.HandlerFunc {
 			playRes[i] = PlaylistResponse{
 				ID:    p.ID,
 				Title: p.Title,
-				Cover: p.Cover, // or p.IconURL if your model field differs
+				Cover: p.Cover,
 			}
 		}
 
