@@ -43,9 +43,20 @@ func GetSearch(db *gorm.DB) gin.HandlerFunc {
 		}
 		wildcard := "%" + q + "%"
 
+		/*var songs []models.Song
+		// join artists so we can filter by artists.name
+			db.
+		  Preload("Artist").      // so s.Artist is populated in your response
+		  Joins("LEFT JOIN artists ON artists.id = songs.artist_id").
+		  Where("songs.title LIKE ? OR artists.name LIKE ?", wildcard, wildcard).
+		  Find(&songs)*/
+
 		// 1) Search Songs
 		var songs []models.Song
-		db.Where("title LIKE ? OR artist LIKE ?", wildcard, wildcard).Find(&songs)
+		db.Preload("Artist"). // so s.Artist is populated in your response
+					Joins("LEFT JOIN artists ON artists.artist_id = songs.artist_id").
+					Where("songs.title LIKE ? OR artists.name LIKE ?", wildcard, wildcard).
+					Find(&songs)
 		tracks := make([]TrackResponse, len(songs))
 		for i, s := range songs {
 			tracks[i] = TrackResponse{
@@ -54,7 +65,7 @@ func GetSearch(db *gorm.DB) gin.HandlerFunc {
 				Artist:   s.Artist.Name,
 				AudioURL: "media/song.mp3",
 				// optionally derive an album art URL, e.g. from s.Album
-				AlbumArt: s.Album.Title,
+				AlbumArt: s.Album.Cover,
 			}
 		}
 
@@ -85,7 +96,7 @@ func GetSearch(db *gorm.DB) gin.HandlerFunc {
 
 		// 4) Search Playlists
 		var pls []models.Playlist
-		db.Where("name LIKE ?", wildcard).Find(&pls)
+		db.Where("title LIKE ?", wildcard).Find(&pls)
 		playRes := make([]PlaylistResponse, len(pls))
 		for i, p := range pls {
 			playRes[i] = PlaylistResponse{

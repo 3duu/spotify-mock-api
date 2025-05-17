@@ -70,6 +70,9 @@ func main() {
 
 	r.GET("/me", handlers.GetCurrentUser(db))
 
+	// Search endpoint
+	r.GET("/search", handlers.GetSearch(db))
+
 	// Start server
 	localIP := utils.GetLocalIP()
 	port := ":8080"
