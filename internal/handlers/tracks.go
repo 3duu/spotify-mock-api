@@ -36,8 +36,10 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"id":        song.ID,
 		"title":     song.Title,
-		"artist":    song.Artist,
-		"album":     song.Album,
+		"artist":    song.Artist.Name,
+		"artist_id": song.Artist.ArtistId,
+		"album_art": song.Album.Cover,
+		"album_id":  song.AlbumID,
 		"duration":  song.Duration,
 		"audio_url": audioURL,
 	})
