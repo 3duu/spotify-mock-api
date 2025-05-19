@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	"log"
@@ -27,18 +26,18 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 	}
 
 	// Determine request scheme for correct URL
-	scheme := "http"
+	/*scheme := "http"
 	if c.Request.TLS != nil {
 		scheme = "https"
-	}
-	audioURL := fmt.Sprintf("%s://%s/media/song.mp3", scheme, c.Request.Host)
+	}*/
+	audioURL := "/media/song.mp3" //fmt.Sprintf("%s://%s/media/song.mp3", scheme, c.Request.Host)
 
 	c.JSON(http.StatusOK, gin.H{
 		"id":        song.ID,
 		"title":     song.Title,
 		"artist":    song.Artist.Name,
 		"artist_id": song.Artist.ArtistId,
-		"album_art": song.Album.Cover,
+		"album_art": "/media/album-art.jpg",
 		"album_id":  song.AlbumID,
 		"duration":  song.Duration,
 		"audio_url": audioURL,
