@@ -39,7 +39,7 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 		"artist_id": song.Artist.ArtistId,
 		"album_art": "/media/album-art.jpg",
 		"album_id":  song.AlbumID,
-		"duration":  song.Duration,
+		"duration":  169, //fixed
 		"audio_url": audioURL,
 	})
 }
