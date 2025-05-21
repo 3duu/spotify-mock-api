@@ -37,6 +37,7 @@ type Podcast struct {
 type Song struct {
 	ID    string `gorm:"primaryKey" json:"id"`
 	Title string `json:"title"`
+	Color string `json:"color"`
 
 	// foreign key to Artist
 	ArtistID int    `json:"artist_id"`

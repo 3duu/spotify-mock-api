@@ -19,10 +19,6 @@ func NewTrackHandler(db *gorm.DB) *TrackHandler {
 // getTrackByID retrieves song metadata and returns it along with an audio URL
 func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 	var song models.Song // make sure Song is imported or duplicated here
-	/*if err := h.DB.First(&song, "id = ?", c.Param("id")).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "song not found"})
-		return
-	}*/
 	id := c.Param("id")
 	if err := h.DB.
 		Preload("Artist").
@@ -33,12 +29,7 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 		return
 	}
 
-	// Determine request scheme for correct URL
-	/*scheme := "http"
-	if c.Request.TLS != nil {
-		scheme = "https"
-	}*/
-	audioURL := "/media/song.mp3" //fmt.Sprintf("%s://%s/media/song.mp3", scheme, c.Request.Host)
+	audioURL := "/media/song.mp3"
 
 	c.JSON(http.StatusOK, gin.H{
 		"id":        song.ID,
@@ -49,6 +40,7 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 		"album_id":  song.AlbumID,
 		"duration":  169, //fixed
 		"audio_url": audioURL,
+		"color":     "#303549",
 	})
 }
 
