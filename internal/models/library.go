@@ -13,27 +13,14 @@ type Playlist struct {
 	LastUpdated time.Time `gorm:"autoUpdateTime" json:"last_updated"`
 	UserID      int       `json:"user_id"`
 	Owner       User      `gorm:"foreignKey:UserID"`
-	Songs       []Song    `gorm:"many2many:playlist_songs;" json:"songs"`
-}
-type Artist struct {
-	ArtistId int    `json:"artist_id" gorm:"primaryKey"`
-	Name     string `json:"name"`
-}
-type Album struct {
-	AlbumId  int    `json:"album_id" gorm:"primaryKey"`
-	Title    string `json:"title"`
-	ArtistID int    `json:"artist_id"`           // foreign key column
-	Artist   Artist `gorm:"foreignKey:ArtistID"` // association
-	Cover    string `json:"cover"`
-}
-type Podcast struct {
-	ID    int            `json:"id" gorm:"primaryKey"`
-	Title string         `json:"title"`
-	Hosts datatypes.JSON `json:"hosts" gorm:"type:json"`
-	Cover string         `json:"cover"`
+	Songs       []Song    `gorm:"many2many:playlist_songs;"`
+	SongIDs     []int     `gorm:"-" json:"songs"`
 }
 
-// internal/models/models.go
+type PlaylistSong struct {
+	PlaylistID int `json:"playlist_id"`
+	SongID     int `json:"song_id"`
+}
 
 type Song struct {
 	ID    string `gorm:"primaryKey" json:"id"`
@@ -53,9 +40,22 @@ type Song struct {
 	AudioURL string `json:"audio_url"`
 }
 
-type PlaylistSong struct {
-	PlaylistID string
-	SongID     string
+type Artist struct {
+	ArtistId int    `json:"artist_id" gorm:"primaryKey"`
+	Name     string `json:"name"`
+}
+type Album struct {
+	AlbumId  int    `json:"album_id" gorm:"primaryKey"`
+	Title    string `json:"title"`
+	ArtistID int    `json:"artist_id"`           // foreign key column
+	Artist   Artist `gorm:"foreignKey:ArtistID"` // association
+	Cover    string `json:"cover"`
+}
+type Podcast struct {
+	ID    int            `json:"id" gorm:"primaryKey"`
+	Title string         `json:"title"`
+	Hosts datatypes.JSON `json:"hosts" gorm:"type:json"`
+	Cover string         `json:"cover"`
 }
 
 // Bundle into a single response object
@@ -67,7 +67,7 @@ type LibraryData struct {
 
 type LibraryEntry struct {
 	gorm.Model
-	ID          string `gorm:"primaryKey"`
+	ID          int    `gorm:"primaryKey"`
 	Type        string // "playlist" | "album" | "podcast"
 	ReferenceID string // points to the real Playlist.ID, Album.ID, etc.
 	Title       string

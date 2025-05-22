@@ -81,12 +81,15 @@ func GetPlaylistDetail(db *gorm.DB) gin.HandlerFunc {
 
 		// 1) Load playlist, its owner, and its tracks (+ artists + cover fields)
 		var pl models.Playlist
-		err := db.
-			Preload("Owner"). // assuming Playlist has an Owner   field -> User
-			/*Preload("Tracks.Artist"). // assuming Playlist.Tracks []*Track
-			Preload("Tracks").        // to get Track.Cover, Track.VideoFlag, Track.DownloadedFlag*/
-			First(&pl, "id = ?", playlistID).Error
-		if err != nil {
+		if err := db.
+			Preload("Owner").
+			Preload("Songs", func(db *gorm.DB) *gorm.DB {
+				return db.
+					Preload("Artist").
+					Preload("Album")
+			}).
+			First(&pl, playlistID).
+			Error; err != nil {
 			c.JSON(http.StatusNotFound, gin.H{"error": "playlist not found"})
 			return
 		}
@@ -107,7 +110,6 @@ func GetPlaylistDetail(db *gorm.DB) gin.HandlerFunc {
 			}
 		}
 
-		// 3) Convert totalSec into "5h 59m"
 		h := totalSec / 3600
 		m := (totalSec % 3600) / 60
 		durationStr := fmt.Sprintf("%dh %02dm", h, m)
@@ -124,5 +126,115 @@ func GetPlaylistDetail(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		c.JSON(http.StatusOK, resp)
+	}
+}
+
+func AddTrackToPlaylist(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		plID, err := strconv.Atoi(c.Param("id"))
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid playlist ID"})
+			return
+		}
+
+		var body struct {
+			TrackID int `json:"track_id"`
+		}
+		if err := c.BindJSON(&body); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "missing track_id"})
+			return
+		}
+
+		// create join record
+		entry := models.PlaylistSong{
+			PlaylistID: plID,
+			SongID:     body.TrackID,
+		}
+		if err := db.Create(&entry).Error; err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "could not add track"})
+			return
+		}
+		c.Status(http.StatusNoContent)
+	}
+}
+
+// DELETE /playlists/:id/tracks/:trackId
+func RemoveTrackFromPlaylist(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		plID, err1 := strconv.Atoi(c.Param("id"))
+		trID, err2 := strconv.Atoi(c.Param("trackId"))
+		if err1 != nil || err2 != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid IDs"})
+			return
+		}
+
+		if err := db.
+			Where("playlist_id = ? AND song_id = ?", plID, trID).
+			Delete(&models.PlaylistSong{}).
+			Error; err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "could not remove track"})
+			return
+		}
+		c.Status(http.StatusNoContent)
+	}
+}
+
+// PUT    /playlists/:id
+// Body: { "title": "New Name", "cover": "/media/new.jpg" }
+func UpdatePlaylistMeta(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		plID, err := strconv.Atoi(c.Param("id"))
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid playlist ID"})
+			return
+		}
+
+		var body struct {
+			Title string `json:"title"`
+			Cover string `json:"cover"`
+		}
+		if err := c.BindJSON(&body); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid body"})
+			return
+		}
+
+		if err := db.Model(&models.Playlist{}).
+			Where("id = ?", plID).
+			Updates(models.Playlist{Title: body.Title, Cover: body.Cover}).
+			Error; err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "could not update playlist"})
+			return
+		}
+		c.Status(http.StatusNoContent)
+	}
+}
+
+// PUT    /playlists/:id/reorder
+// Body: { "track_ids": [3,5,2,1] }
+func ReorderPlaylist(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		plID, err := strconv.Atoi(c.Param("id"))
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid playlist ID"})
+			return
+		}
+		var body struct {
+			TrackIDs []int `json:"track_ids"`
+		}
+		if err := c.BindJSON(&body); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid body"})
+			return
+		}
+		// update join table ordering: assumes PlaylistSong has Position field
+		for pos, tid := range body.TrackIDs {
+			if err := db.Model(&models.PlaylistSong{}).
+				Where("playlist_id = ? AND song_id = ?", plID, tid).
+				Update("position", pos).
+				Error; err != nil {
+				c.JSON(http.StatusInternalServerError, gin.H{"error": "could not reorder"})
+				return
+			}
+		}
+		c.Status(http.StatusNoContent)
 	}
 }

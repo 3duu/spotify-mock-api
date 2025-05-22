@@ -7,6 +7,7 @@ import (
 	"github.com/glebarez/sqlite"
 	"github.com/rs/cors"
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 	"gorm.io/gorm/logger"
 	"io/ioutil"
 	"log"
@@ -15,7 +16,6 @@ import (
 	"spotify-mock-api/internal/handlers"
 	"spotify-mock-api/internal/models"
 	"spotify-mock-api/internal/utils"
-	"time"
 )
 
 var db *gorm.DB
@@ -74,6 +74,11 @@ func main() {
 	r.GET("/search", handlers.GetSearch(db))
 
 	r.GET("/playlists/:id", handlers.GetPlaylistDetail(db))
+
+	r.POST("/playlists/:id/tracks", handlers.AddTrackToPlaylist(db))
+	r.DELETE("/playlists/:id/tracks/:trackId", handlers.RemoveTrackFromPlaylist(db))
+	r.PUT("/playlists/:id", handlers.UpdatePlaylistMeta(db))
+	r.PUT("/playlists/:id/reorder", handlers.ReorderPlaylist(db))
 
 	// Start server
 	localIP := utils.GetLocalIP()
@@ -137,18 +142,26 @@ func seedDefaults(db *gorm.DB) error {
 	}
 
 	// Seed Playlists
-	var plCount int64
-	db.Model(&models.Playlist{}).Count(&plCount)
-	if plCount == 0 {
-		for i := range defs.Playlists {
-			if defs.Playlists[i].LastUpdated.IsZero() {
-				defs.Playlists[i].LastUpdated = time.Now()
+	for _, p := range defs.Playlists {
+		// 1) create the playlist record (without songs)
+		if err := db.Clauses(clause.OnConflict{DoNothing: true}).
+			Create(&models.Playlist{
+				ID: p.ID, Title: p.Title, Cover: p.Cover, UserID: p.UserID,
+			}).Error; err != nil {
+			log.Fatal(err)
+		}
+
+		// 2) now seed the join‐table entries
+		for _, sid := range p.SongIDs {
+			entry := models.PlaylistSong{
+				PlaylistID: p.ID,
+				SongID:     sid,
+			}
+			if err := db.Clauses(clause.OnConflict{DoNothing: true}).
+				Create(&entry).Error; err != nil {
+				log.Fatal(err)
 			}
 		}
-		if err := db.Create(&defs.Playlists).Error; err != nil {
-			return fmt.Errorf("insert playlists: %w", err)
-		}
-		log.Printf("seeded %d playlists", len(defs.Playlists))
 	}
 
 	// Seed Podcasts
