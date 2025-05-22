@@ -12,6 +12,7 @@ type Playlist struct {
 	Cover       string    `json:"cover"`
 	LastUpdated time.Time `gorm:"autoUpdateTime" json:"last_updated"`
 	UserID      int       `json:"user_id"`
+	Owner       User      `gorm:"foreignKey:UserID"`
 	Songs       []Song    `gorm:"many2many:playlist_songs;" json:"songs"`
 }
 type Artist struct {
