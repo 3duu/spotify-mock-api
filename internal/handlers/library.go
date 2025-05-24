@@ -19,12 +19,12 @@ func GetLibraryData(db *gorm.DB) gin.HandlerFunc {
 		db.Find(&podcasts)
 
 		// Default cover image for any album missing one
-		const defaultCover = "/media/album-art.jpg"
+		/*const defaultCover = "/media/album-art.jpg"
 		for i := range albums {
 			if albums[i].Cover == "" {
 				albums[i].Cover = defaultCover
 			}
-		}
+		}*/
 
 		c.JSON(http.StatusOK, models.LibraryData{
 			Playlists: playlists,

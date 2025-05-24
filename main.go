@@ -36,6 +36,7 @@ func main() {
 		&models.Podcast{},
 		&models.LibraryEntry{},
 		&models.User{},
+		&models.RecentPlay{},
 	); err != nil {
 		log.Fatal("migration failed:", err)
 	}
@@ -69,6 +70,7 @@ func main() {
 	r.GET("/library", handlers.GetLibraryData(db))
 
 	r.GET("/me", handlers.GetCurrentUser(db))
+	r.GET("/me/recent", handlers.GetRecentPlays(db))
 
 	// Search endpoint
 	r.GET("/search", handlers.GetSearch(db))

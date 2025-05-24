@@ -58,10 +58,20 @@ func GetRecentPlaylistsByUser(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Map to API response type
+		// Map to API response type, counting tracks in the join table
 		resp := make([]PlaylistResponse, len(pls))
 		for i, p := range pls {
-			subtitle := fmt.Sprintf("Playlist • %d tracks", 0) // Replace 0 if you count tracks
+			var trackCount int64
+			if err := db.
+				Model(&models.PlaylistSong{}).
+				Where("playlist_id = ?", p.ID).
+				Count(&trackCount).
+				Error; err != nil {
+				// if counting fails, just fall back to zero
+				trackCount = 0
+			}
+
+			subtitle := fmt.Sprintf("Playlist • %d tracks", trackCount)
 			resp[i] = PlaylistResponse{
 				ID:       p.ID,
 				Title:    p.Title,

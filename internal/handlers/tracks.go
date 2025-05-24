@@ -31,6 +31,13 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 
 	audioURL := "/media/song.mp3"
 
+	// Record that “user 1” played track ID=…
+	h.DB.Create(&models.RecentPlay{
+		UserID:      1,
+		Type:        "track",
+		ReferenceID: id,
+	})
+
 	c.JSON(http.StatusOK, gin.H{
 		"id":        song.ID,
 		"title":     song.Title,

@@ -35,9 +35,9 @@ type Song struct {
 	AlbumID int   `json:"album_id"`
 	Album   Album `gorm:"foreignKey:AlbumID"` // the actual relation
 
-	Genre    string `json:"genre"`
-	Duration int    `json:"duration"`
-	AudioURL string `json:"audio_url"`
+	Genres   datatypes.JSON `json:"genres"` // ← store raw JSON in SQLite
+	Duration int            `json:"duration"`
+	AudioURL string         `json:"audio_url"`
 }
 
 type Artist struct {
@@ -73,4 +73,12 @@ type LibraryEntry struct {
 	Title       string
 	Subtitle    string
 	IconURL     string
+}
+
+type RecentPlay struct {
+	ID          uint      `gorm:"primaryKey" json:"-"`
+	UserID      int       `json:"user_id"`
+	Type        string    `json:"type"`         // "track", "artist", "album", "playlist", "podcast"
+	ReferenceID string    `json:"reference_id"` // the ID of the item played
+	PlayedAt    time.Time `gorm:"autoCreateTime" json:"played_at"`
 }
