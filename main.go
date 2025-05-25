@@ -71,6 +71,7 @@ func main() {
 
 	r.GET("/me", handlers.GetCurrentUser(db))
 	r.GET("/me/recent", handlers.GetRecentPlays(db))
+	r.GET("/me/recommendations", handlers.GetRecommendations(db))
 
 	// Search endpoint
 	r.GET("/search", handlers.GetSearch(db))

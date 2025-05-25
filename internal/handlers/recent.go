@@ -11,7 +11,7 @@ import (
 
 type RecentItemResponse struct {
 	Type     string `json:"type"`
-	ID       string `json:"id"`
+	ID       int    `json:"id"`
 	Title    string `json:"title"`
 	Subtitle string `json:"subtitle,omitempty"`
 	Cover    string `json:"cover,omitempty"`

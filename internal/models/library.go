@@ -79,6 +79,7 @@ type RecentPlay struct {
 	ID          uint      `gorm:"primaryKey" json:"-"`
 	UserID      int       `json:"user_id"`
 	Type        string    `json:"type"`         // "track", "artist", "album", "playlist", "podcast"
-	ReferenceID string    `json:"reference_id"` // the ID of the item played
+	ReferenceID int       `json:"reference_id"` // the ID of the item played
+	OriginID    int       `json:"origin_id"`
 	PlayedAt    time.Time `gorm:"autoCreateTime" json:"played_at"`
 }

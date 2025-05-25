@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"path/filepath"
 	"spotify-mock-api/internal/models"
+	"strconv"
 )
 
 type TrackHandler struct {
@@ -18,8 +19,9 @@ func NewTrackHandler(db *gorm.DB) *TrackHandler {
 
 // getTrackByID retrieves song metadata and returns it along with an audio URL
 func (h *TrackHandler) GetTrackByID(c *gin.Context) {
-	var song models.Song // make sure Song is imported or duplicated here
-	id := c.Param("id")
+	var song models.Song
+	id, _ := strconv.Atoi(c.Param("id"))
+
 	if err := h.DB.
 		Preload("Artist").
 		Preload("Album").
@@ -29,25 +31,33 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 		return
 	}
 
+	// build your audio URL
 	audioURL := "/media/song.mp3"
 
-	// Record that “user 1” played track ID=…
+	// read where this play came from:
+	// e.g. GET /tracks/123?origin=playlist&originId=42
+	originType := c.Query("origin")
+	originID, _ := strconv.Atoi(c.Query("originId"))
+
+	// record the play, including its origin
 	h.DB.Create(&models.RecentPlay{
 		UserID:      1,
-		Type:        "track",
+		Type:        originType,
 		ReferenceID: id,
+		OriginID:    originID,
 	})
 
+	// return the metadata
 	c.JSON(http.StatusOK, gin.H{
 		"id":        song.ID,
 		"title":     song.Title,
 		"artist":    song.Artist.Name,
 		"artist_id": song.Artist.ArtistId,
-		"album_art": "/media/album-art.jpg",
+		"album_art": song.Album.Cover,
 		"album_id":  song.AlbumID,
-		"duration":  169, //fixed
+		"duration":  song.Duration,
 		"audio_url": audioURL,
-		"color":     "#303549",
+		"color":     song.Color,
 	})
 }
 
