@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 	"net/http"
 	"spotify-mock-api/internal/models"
 	"strconv"
@@ -160,7 +161,11 @@ func AddTrackToPlaylist(db *gorm.DB) gin.HandlerFunc {
 			PlaylistID: plID,
 			SongID:     body.TrackID,
 		}
-		if err := db.Create(&entry).Error; err != nil {
+		// ON CONFLICT DO NOTHING → no more UNIQUE violations
+		if err := db.
+			Clauses(clause.OnConflict{DoNothing: true}).
+			Create(&entry).
+			Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "could not add track"})
 			return
 		}
@@ -186,6 +191,66 @@ func RemoveTrackFromPlaylist(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 		c.Status(http.StatusNoContent)
+	}
+}
+
+type createPlaylistRequest struct {
+	Title string `json:"title" binding:"required"`
+	Cover string `json:"cover"`
+}
+
+// POST /playlists
+// Body: { "title": "My New Playlist", "cover": "/media/my-cover.jpg" }
+func CreatePlaylist(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 1) bind JSON
+		var body createPlaylistRequest
+		if err := c.ShouldBindJSON(&body); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "title is required"})
+			return
+		}
+
+		userID := 1 // TODO: replace with actual authenticated user ID
+
+		// 2) check for existing playlist with same title
+		var existing models.Playlist
+		err := db.
+			Where("user_id = ? AND title = ?", userID, body.Title).
+			First(&existing).
+			Error
+
+		if err == nil {
+			// found one → reject
+			c.JSON(http.StatusBadRequest, gin.H{
+				"error": fmt.Sprintf("you already have a playlist named %q", body.Title),
+			})
+			return
+		} else if err != gorm.ErrRecordNotFound {
+			// some other DB error
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "could not verify playlist name"})
+			return
+		}
+
+		// 3) create new playlist
+		pl := models.Playlist{
+			Title:  body.Title,
+			Cover:  body.Cover,
+			UserID: userID,
+		}
+		if err := db.Create(&pl).Error; err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "could not create playlist"})
+			return
+		}
+
+		// 4) return the new playlist
+		resp := PlaylistResponse{
+			ID:          pl.ID,
+			Title:       pl.Title,
+			Subtitle:    fmt.Sprintf("Playlist • 0 tracks"),
+			Cover:       pl.Cover,
+			LastUpdated: pl.LastUpdated,
+		}
+		c.JSON(http.StatusCreated, resp)
 	}
 }
 

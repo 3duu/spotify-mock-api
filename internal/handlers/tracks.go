@@ -38,11 +38,15 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 	// e.g. GET /tracks/123?origin=playlist&originId=42
 	originType := c.Query("origin")
 	originID, _ := strconv.Atoi(c.Query("originId"))
+	playType := "track"
+	if originType != "" {
+		playType = originType
+	}
 
 	// record the play, including its origin
 	h.DB.Create(&models.RecentPlay{
 		UserID:      1,
-		Type:        originType,
+		Type:        playType,
 		ReferenceID: id,
 		OriginID:    originID,
 	})
@@ -57,7 +61,7 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 		"album_id":  song.AlbumID,
 		"duration":  song.Duration,
 		"audio_url": audioURL,
-		"color":     song.Color,
+		"color":     "#303549",
 	})
 }
 
