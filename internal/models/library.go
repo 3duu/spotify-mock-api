@@ -23,7 +23,7 @@ type PlaylistSong struct {
 }
 
 type Song struct {
-	ID    string `gorm:"primaryKey" json:"id"`
+	ID    int    `gorm:"primaryKey" json:"id"`
 	Title string `json:"title"`
 	Color string `json:"color"`
 
@@ -43,6 +43,9 @@ type Song struct {
 type Artist struct {
 	ArtistId int    `json:"artist_id" gorm:"primaryKey"`
 	Name     string `json:"name"`
+	Songs    []Song `gorm:"foreignKey:ArtistID"` // association to songs
+	SongIDs  []int  `gorm:"-" json:"songs"`      // for frontend convenience
+	Image    string `json:"image"`               // optional image for the artist
 }
 type Album struct {
 	AlbumId  int    `json:"album_id" gorm:"primaryKey"`
@@ -50,6 +53,9 @@ type Album struct {
 	ArtistID int    `json:"artist_id"`           // foreign key column
 	Artist   Artist `gorm:"foreignKey:ArtistID"` // association
 	Cover    string `json:"cover"`
+	Songs    []Song `gorm:"foreignKey:AlbumID"` // association to songs
+	SongIDs  []int  `gorm:"-" json:"songs"`     // for
+	Image    string `json:"image"`              // optional image for the album
 }
 type Podcast struct {
 	ID    int            `json:"id" gorm:"primaryKey"`

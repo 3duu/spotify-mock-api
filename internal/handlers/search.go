@@ -11,12 +11,13 @@ import (
 
 // TrackResponse matches the front‐end TrackMeta
 type TrackResponse struct {
-	ID         string `json:"id"`
+	ID         int    `json:"id"`
 	Title      string `json:"title"`
 	Artist     string `json:"artist"`
 	AudioURL   string `json:"audio_url"`
 	AlbumArt   string `json:"album_art,omitempty"`
 	Downloaded bool   `json:"downloaded"`
+	Duration   int    `json:"duration,omitempty"` // in seconds
 }
 
 // ArtistResponse matches the front‐end Artist type
