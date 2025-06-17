@@ -9,17 +9,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// TrackResponse matches the front‐end TrackMeta
-type TrackResponse struct {
-	ID         int    `json:"id"`
-	Title      string `json:"title"`
-	Artist     string `json:"artist"`
-	AudioURL   string `json:"audio_url"`
-	AlbumArt   string `json:"album_art,omitempty"`
-	Downloaded bool   `json:"downloaded"`
-	Duration   int    `json:"duration,omitempty"` // in seconds
-}
-
 // ArtistResponse matches the front‐end Artist type
 type ArtistResponse struct {
 	ID    int    `json:"id"`
@@ -51,9 +40,9 @@ func GetSearch(db *gorm.DB) gin.HandlerFunc {
 					Joins("LEFT JOIN artists ON artists.artist_id = songs.artist_id").
 					Where("songs.title LIKE ? OR artists.name LIKE ?", wildcard, wildcard).
 					Find(&songs)
-		tracks := make([]TrackResponse, len(songs))
+		tracks := make([]models.TrackResponse, len(songs))
 		for i, s := range songs {
-			tracks[i] = TrackResponse{
+			tracks[i] = models.TrackResponse{
 				ID:       s.ID,
 				Title:    s.Title,
 				Artist:   s.Artist.Name,

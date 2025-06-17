@@ -37,7 +37,7 @@ type Song struct {
 
 	Genres   datatypes.JSON `json:"genres"` // ← store raw JSON in SQLite
 	Duration int            `json:"duration"`
-	AudioURL string         `json:"audio_url"`
+	AudioURL string         `json:"audio_url" default:"/media/song.mp3"`
 }
 
 type Artist struct {

@@ -12,13 +12,13 @@ import (
 
 // ArtistDetailResponse matches the same shape
 type ArtistDetailResponse struct {
-	ID         int             `json:"id"`
-	Title      string          `json:"title"`      // artist name
-	Cover      string          `json:"cover"`      // could be a default artist image
-	OwnerName  string          `json:"ownerName"`  // blank or same as title
-	OwnerImage string          `json:"ownerImage"` // artist avatar
-	Duration   string          `json:"duration"`   // sum of track durations
-	Tracks     []TrackResponse `json:"tracks"`
+	ID         int                    `json:"id"`
+	Title      string                 `json:"title"`      // artist name
+	Cover      string                 `json:"cover"`      // could be a default artist image
+	OwnerName  string                 `json:"ownerName"`  // blank or same as title
+	OwnerImage string                 `json:"ownerImage"` // artist avatar
+	Duration   string                 `json:"duration"`   // sum of track durations
+	Tracks     []models.TrackResponse `json:"tracks"`
 }
 
 // GetArtistDetail loads an artist, their top songs (or all songs), then returns unified response.
@@ -52,9 +52,9 @@ func GetArtistDetail(db *gorm.DB) gin.HandlerFunc {
 		durationStr := dur.Truncate(time.Second).String()
 
 		// map tracks
-		tracks := make([]TrackResponse, len(artist.Songs))
+		tracks := make([]models.TrackResponse, len(artist.Songs))
 		for i, s := range artist.Songs {
-			tracks[i] = TrackResponse{
+			tracks[i] = models.TrackResponse{
 				ID:         s.ID,
 				Title:      s.Title,
 				Artist:     artist.Name,

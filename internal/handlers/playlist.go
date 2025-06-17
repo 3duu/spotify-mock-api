@@ -21,13 +21,13 @@ type PlaylistResponse struct {
 
 // PlaylistDetailResponse is the full payload for GET /playlists/:id
 type PlaylistDetailResponse struct {
-	ID         int             `json:"id"`
-	Title      string          `json:"title"`
-	Cover      string          `json:"cover"`
-	OwnerName  string          `json:"ownerName"`
-	OwnerImage string          `json:"ownerImage"`
-	Duration   string          `json:"duration"` // e.g. "5h 59m"
-	Tracks     []TrackResponse `json:"tracks"`
+	ID         int                    `json:"id"`
+	Title      string                 `json:"title"`
+	Cover      string                 `json:"cover"`
+	OwnerName  string                 `json:"ownerName"`
+	OwnerImage string                 `json:"ownerImage"`
+	Duration   string                 `json:"duration"` // e.g. "5h 59m"
+	Tracks     []models.TrackResponse `json:"tracks"`
 }
 
 // GetRecentPlaylistsByUser returns up to 10 most‐recently updated playlists
@@ -106,18 +106,20 @@ func GetPlaylistDetail(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		// 2) Build the slice of TrackResponse
-		tracks := make([]TrackResponse, len(pl.Songs))
+		tracks := make([]models.TrackResponse, len(pl.Songs))
 		var totalSec int
 		for i, t := range pl.Songs {
 			// sum up durations
 			totalSec += t.Duration
 
-			tracks[i] = TrackResponse{
+			tracks[i] = models.TrackResponse{
 				ID:         t.ID,
 				Title:      t.Title,
 				Artist:     t.Artist.Name,
 				AlbumArt:   t.Album.Cover,
 				Downloaded: false,
+				Duration:   t.Duration,
+				Album:      t.Album.Title,
 			}
 		}
 

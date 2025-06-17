@@ -50,19 +50,20 @@ func (h *TrackHandler) GetTrackByID(c *gin.Context) {
 		ReferenceID: id,
 		OriginID:    originID,
 	})
-
+	response := models.TrackResponse{
+		ID:       song.ID,
+		Title:    song.Title,
+		Artist:   song.Artist.Name,
+		ArtistID: song.Artist.ArtistId,
+		AlbumArt: song.Album.Cover,
+		AlbumID:  song.AlbumID,
+		Album:    song.Album.Title,
+		Duration: song.Duration,
+		AudioURL: audioURL,
+		Color:    "#303549",
+	}
 	// return the metadata
-	c.JSON(http.StatusOK, gin.H{
-		"id":        song.ID,
-		"title":     song.Title,
-		"artist":    song.Artist.Name,
-		"artist_id": song.Artist.ArtistId,
-		"album_art": song.Album.Cover,
-		"album_id":  song.AlbumID,
-		"duration":  song.Duration,
-		"audio_url": audioURL,
-		"color":     "#303549",
-	})
+	c.JSON(http.StatusOK, response)
 }
 
 // getTrackAudio streams the MP3 file (always the same file)

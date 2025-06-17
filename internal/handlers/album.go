@@ -12,13 +12,13 @@ import (
 
 // AlbumDetailResponse matches the “PlaylistDetail” shape on the frontend:
 type AlbumDetailResponse struct {
-	ID         int             `json:"id" :"id"`
-	Title      string          `json:"title" :"title"`
-	Cover      string          `json:"cover" :"cover"`
-	OwnerName  string          `json:"ownerName" :"owner_name"`   // here: artist name
-	OwnerImage string          `json:"ownerImage" :"owner_image"` // could be blank or artist image
-	Duration   string          `json:"duration" :"duration"`      // total playtime, e.g. "42m 15s"
-	Tracks     []TrackResponse `json:"tracks" :"tracks"`
+	ID         int                    `json:"id" :"id"`
+	Title      string                 `json:"title" :"title"`
+	Cover      string                 `json:"cover" :"cover"`
+	OwnerName  string                 `json:"ownerName" :"owner_name"`   // here: artist name
+	OwnerImage string                 `json:"ownerImage" :"owner_image"` // could be blank or artist image
+	Duration   string                 `json:"duration" :"duration"`      // total playtime, e.g. "42m 15s"
+	Tracks     []models.TrackResponse `json:"tracks" :"tracks"`
 }
 
 // GetAlbumDetail loads an album and its tracks + artist, then returns a unified response.
@@ -52,9 +52,9 @@ func GetAlbumDetail(db *gorm.DB) gin.HandlerFunc {
 		durationStr := dur.Truncate(time.Second).String() // "1h2m3s"
 
 		// map tracks
-		tracks := make([]TrackResponse, len(album.Songs))
+		tracks := make([]models.TrackResponse, len(album.Songs))
 		for i, s := range album.Songs {
-			tracks[i] = TrackResponse{
+			tracks[i] = models.TrackResponse{
 				ID:         s.ID,
 				Title:      s.Title,
 				Artist:     s.Artist.Name,
