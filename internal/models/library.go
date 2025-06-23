@@ -89,3 +89,12 @@ type RecentPlay struct {
 	OriginID    int       `json:"origin_id"`
 	PlayedAt    time.Time `gorm:"autoCreateTime" json:"played_at"`
 }
+
+type Newsletter struct {
+	gorm.Model
+	ID       int `json:"id"`
+	Title    string
+	Subtitle string
+	ImageURL string // e.g. "/media/news1.jpg"
+	Type     string // SONG, ALBUM, PODCAST, ARTIST
+}
