@@ -81,6 +81,9 @@ func main() {
 	r.GET("/albums/:id", handlers.GetAlbumDetail(db))
 	r.GET("/artists/:id", handlers.GetArtistDetail(db))
 
+	// newsletters
+	r.GET("/newsletters", handlers.GetNewsletters(db))
+
 	r.POST("/playlists/:id/tracks", handlers.AddTrackToPlaylist(db))
 	r.DELETE("/playlists/:id/tracks/:trackId", handlers.RemoveTrackFromPlaylist(db))
 	r.PUT("/playlists/:id", handlers.UpdatePlaylistMeta(db))

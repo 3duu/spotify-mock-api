@@ -877,6 +877,12 @@
       "title": "The Poison",
       "artist_id": 63,
       "cover": "/media/album-art.jpg"
+    },
+    {
+      "album_id": 89,
+      "title": "From Zero",
+      "artist_id": 61,
+      "cover": "/media/album-art.jpg"
     }
   ],
   "songs": [
@@ -4060,6 +4066,43 @@
       ],
       "artist_id": 53,
       "album_id": 72
+    },
+    {
+      "id": 305,
+      "title": "Two Faced",
+      "duration": 289,
+      "genres": [
+        "Rock"
+      ],
+      "artist_id": 61,
+      "album_id": 89
+    },
+    {
+      "id": 306,
+      "title": "The Emptiness Machine",
+      "duration": 289,
+      "genres": [
+        "Rock"
+      ],
+      "artist_id": 61,
+      "album_id": 89
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "title": "New Album From Zero",
+      "content": "The latest album from Linkin Park.",
+      "date": "2025-10-01",
+      "type": "ALBUM",
+      "item_id": 89
+    },
+    {
+      "id": 2,
+      "title": "Podcast Series Launch",
+      "content": "A new podcast series featuring interviews with top artists.",
+      "date": "2025-10-05",
+      "type": "PODCAST"
     }
   ]
 }
