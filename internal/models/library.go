@@ -57,11 +57,21 @@ type Album struct {
 	SongIDs  []int  `gorm:"-" json:"songs"`     // for
 	Image    string `json:"image"`              // optional image for the album
 }
+
+type PodcastEpisode struct {
+	ID          int
+	Title       string `json:"title"`
+	Duration    int    `json:"duration"`
+	AudioURL    string `json:"audio_url"`
+	Description string `json:"description"`
+}
+
 type Podcast struct {
-	ID    int            `json:"id" gorm:"primaryKey"`
-	Title string         `json:"title"`
-	Hosts datatypes.JSON `json:"hosts" gorm:"type:json"`
-	Cover string         `json:"cover"`
+	ID       int              `json:"id" gorm:"primaryKey"`
+	Title    string           `json:"title"`
+	Hosts    datatypes.JSON   `json:"hosts" gorm:"type:json"`
+	Cover    string           `json:"cover"`
+	Episodes []PodcastEpisode `json:"episodes"`
 }
 
 // Bundle into a single response object
@@ -92,9 +102,10 @@ type RecentPlay struct {
 
 type Newsletter struct {
 	gorm.Model
-	ID       int `json:"id"`
-	Title    string
-	Subtitle string
-	ImageURL string // e.g. "/media/news1.jpg"
-	Type     string // SONG, ALBUM, PODCAST, ARTIST
+	ID      int    `gorm:"primaryKey" json:"id"`
+	Title   string `json:"title"`
+	Content string `json:"content"`
+	Date    string `json:"date"`
+	Type    string `json:"type"`
+	ItemID  int    `json:"item_id"`
 }

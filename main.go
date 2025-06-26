@@ -37,6 +37,7 @@ func main() {
 		&models.LibraryEntry{},
 		&models.User{},
 		&models.RecentPlay{},
+		&models.Newsletter{},
 	); err != nil {
 		log.Fatal("migration failed:", err)
 	}
@@ -107,6 +108,7 @@ type Defaults struct {
 	Podcasts       []models.Podcast      `json:"podcasts"`
 	LibraryEntries []models.LibraryEntry `json:"libraryEntries"`
 	Users          []models.User         `json:"users"`
+	Newsletters    []models.Newsletter   `json:"newsletter"`
 }
 
 func seedDefaults(db *gorm.DB) error {
@@ -204,6 +206,16 @@ func seedDefaults(db *gorm.DB) error {
 			return fmt.Errorf("insert users: %w", err)
 		}
 		log.Println("seeded default user profile")
+	}
+
+	// Seed Newsletters
+	var nlCount int64
+	db.Model(&models.Newsletter{}).Count(&nlCount)
+	if nlCount == 0 && len(defs.Newsletters) > 0 {
+		if err := db.Create(&defs.Newsletters).Error; err != nil {
+			return fmt.Errorf("insert newsletters: %w", err)
+		}
+		log.Printf("seeded %d newsletters", len(defs.Newsletters))
 	}
 
 	return nil
