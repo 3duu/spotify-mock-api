@@ -81,6 +81,7 @@ func main() {
 	r.POST("/playlists", handlers.CreatePlaylist(db))
 	r.GET("/albums/:id", handlers.GetAlbumDetail(db))
 	r.GET("/artists/:id", handlers.GetArtistDetail(db))
+	r.GET("/podcasts/:id", handlers.GetPodcastDetail(db))
 
 	// newsletters
 	r.GET("/newsletters", handlers.GetNewsletters(db))

@@ -67,11 +67,11 @@ type PodcastEpisode struct {
 }
 
 type Podcast struct {
-	ID       int              `json:"id" gorm:"primaryKey"`
-	Title    string           `json:"title"`
-	Hosts    datatypes.JSON   `json:"hosts" gorm:"type:json"`
-	Cover    string           `json:"cover"`
-	Episodes []PodcastEpisode `json:"episodes"`
+	ID       int            `json:"id" gorm:"primaryKey"`
+	Title    string         `json:"title"`
+	Hosts    datatypes.JSON `json:"hosts" gorm:"type:json"`
+	Cover    string         `json:"cover"`
+	Episodes datatypes.JSON `json:"episodes" gorm:"type:json"`
 }
 
 // Bundle into a single response object
