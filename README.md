@@ -57,17 +57,29 @@ Endpoints
 A selection of implemented endpoints:
 
 Method	Endpoint	Description
+
 GET	/tracks/:id	Get metadata and audio URL for a track
+
 GET	/albums/:id	Get album details and track list
+
 GET	/artists/:id	Get artist info and their top tracks
+
 GET	/playlists	List all playlists
+
 GET	/playlists/:id	Playlist details and tracks
+
 GET	/users/:id/recent-playlists	Recent playlists for a user
+
 GET	/search	Search tracks, artists, albums, playlists
+
 GET	/newsletters	Newsletter/TGIF home cards
+
 GET	/podcasts/:id	Podcast details and episodes
+
 GET	/library	User’s saved playlists/albums/podcasts
+
 POST	/login	Simulate user login, returns mock token
+
 GET	/me	Get profile of the current user
 ...	...	...
 
