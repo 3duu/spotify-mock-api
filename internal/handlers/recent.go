@@ -21,33 +21,41 @@ type RecentItemResponse struct {
 
 func GetRecentPlays(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// for now, static user=1
 		var recs []models.RecentPlay
 		if err := db.
 			Where("user_id = ?", 1).
 			Order("played_at DESC").
-			Limit(20).
+			Limit(50). // Increase limit if you want 20 unique recents
 			Find(&recs).Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "cannot load recents"})
 			return
 		}
 
 		out := make([]RecentItemResponse, 0, len(recs))
+		seen := make(map[string]bool)
+
 		for _, r := range recs {
+			// Key by type and ReferenceID to ensure uniqueness
+			key := fmt.Sprintf("%s-%d", r.Type, r.ReferenceID)
+			if seen[key] {
+				continue // skip duplicates
+			}
+			seen[key] = true
+
 			item := RecentItemResponse{
 				Type:     r.Type,
 				ID:       r.ReferenceID,
 				PlayedAt: r.PlayedAt.Format(time.RFC3339),
 			}
 
-			// fetch metadata based on type:
+			// fetch metadata as before
 			switch r.Type {
 			case "track":
 				var s models.Song
 				if err := db.Preload("Artist").First(&s, "id = ?", r.ReferenceID).Error; err == nil {
 					item.Title = s.Title
 					item.Subtitle = s.Artist.Name
-					item.Cover = s.AudioURL // or album art
+					item.Cover = "/media/album-art.jpg"
 				}
 			case "artist":
 				var a models.Artist
@@ -58,7 +66,7 @@ func GetRecentPlays(db *gorm.DB) gin.HandlerFunc {
 				var a models.Album
 				if err := db.First(&a, "album_id = ?", r.ReferenceID).Error; err == nil {
 					item.Title = a.Title
-					item.Cover = a.Cover
+					item.Cover = "/media/album-art.jpg"
 				}
 			case "playlist":
 				var p models.Playlist
@@ -75,6 +83,11 @@ func GetRecentPlays(db *gorm.DB) gin.HandlerFunc {
 				}
 			}
 			out = append(out, item)
+
+			// If you want exactly 20 items, break after collecting 20 uniques
+			if len(out) >= 20 {
+				break
+			}
 		}
 
 		c.JSON(http.StatusOK, out)

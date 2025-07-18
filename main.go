@@ -67,12 +67,11 @@ func main() {
 	r.GET("/tracks/:id/audio", handlers.GetTrackAudio)
 
 	//Playlist
-	r.GET("/users/:userId/recent-playlists", handlers.GetRecentPlaylistsByUser(db))
 	r.GET("/library", handlers.GetLibraryData(db))
 
 	r.GET("/me", handlers.GetCurrentUser(db))
-	r.GET("/me/recent", handlers.GetRecentPlays(db))
-	r.GET("/me/recommendations", handlers.GetRecommendations2(db))
+	r.GET("/me/:id/recent", handlers.GetRecentPlays(db))
+	r.GET("/me/recommendations", handlers.GetRecommendations(db))
 
 	// Search endpoint
 	r.GET("/search", handlers.GetSearch(db))

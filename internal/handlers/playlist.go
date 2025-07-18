@@ -32,7 +32,7 @@ type PlaylistDetailResponse struct {
 
 // GetRecentPlaylistsByUser returns up to 10 most‐recently updated playlists
 // for the given user ID, mapping them into PlaylistResponse.
-func GetRecentPlaylistsByUser(db *gorm.DB) gin.HandlerFunc {
+func GetRecentPlayedByUser(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		userIDParam := c.Param("userId")
 		if userIDParam == "" {
