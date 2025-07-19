@@ -84,8 +84,8 @@ func GetRecentPlays(db *gorm.DB) gin.HandlerFunc {
 			}
 			out = append(out, item)
 
-			// If you want exactly 20 items, break after collecting 20 uniques
-			if len(out) >= 20 {
+			// If you want exactly 8 items, break after collecting 8 uniques
+			if len(out) >= 8 {
 				break
 			}
 		}
