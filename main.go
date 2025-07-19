@@ -65,12 +65,14 @@ func main() {
 	// Track endpoints
 	r.GET("/tracks/:id", trackH.GetTrackByID)
 	r.GET("/tracks/:id/audio", handlers.GetTrackAudio)
+	r.GET("/tracks/recent", handlers.GetRecentTracks(db))
 
 	//Playlist
 	r.GET("/library", handlers.GetLibraryData(db))
 
 	r.GET("/me", handlers.GetCurrentUser(db))
 	r.GET("/me/:id/recent", handlers.GetRecentPlays(db))
+
 	r.GET("/me/recommendations", handlers.GetRecommendations(db))
 
 	// Search endpoint
